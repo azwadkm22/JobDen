@@ -21,7 +21,13 @@ class HomeScreen extends StatelessWidget {
                 shrinkWrap: true,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return JobCard();
+                    return JobCard(
+                      jobTitle: "Software Engineer",
+                      jobType: ["Remote", "Internship"],
+                      postedDate: "10/10/2022",
+                      companyName: "Beximco",
+                      salaryRangeStart: 10,
+                      salaryRangeEnd: 100,);
                       // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
                     // );
                   },),

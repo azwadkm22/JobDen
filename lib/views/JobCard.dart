@@ -1,12 +1,17 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_den/color_palette.dart';
 import 'package:job_den/views/view_details_button.dart';
 
 class JobCard extends StatefulWidget {
-  const JobCard({Key? key}) : super(key: key);
-  final String jobTitle = "Job Title";
+  final String jobTitle;
+  final String companyName;
+  final List jobType;// = ["Remote", "Internship"];
+  final int salaryRangeStart;// = 10;
+  final int salaryRangeEnd;// = 100;
+  final String postedDate;// = "10/11/21";
+  JobCard({Key? key, required this.jobTitle, required this.companyName, required this.jobType, required this.salaryRangeStart, required this.salaryRangeEnd, required this.postedDate }) : super(key: key);
+
 
   @override
   _JobCardState createState() => _JobCardState();
@@ -14,11 +19,6 @@ class JobCard extends StatefulWidget {
 
 class _JobCardState extends State<JobCard> {
   String jobTitle = "Job Title";
-  String companyName = "ABCompany";
-  String jobType = "Remote";
-  int salaryRangeStart = 10;
-  int salaryRangeEnd = 100;
-  String date = "10/11/21";
   bool isStarred = false;
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,13 @@ class _JobCardState extends State<JobCard> {
       onTap: () {
         //Take to JobViewPage
       },
-  child: Expanded(child: Container(
+  child: Container(
     padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 2),
     margin: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
+
     decoration: const BoxDecoration(
       color: Color(0xFFC4C4C4),
-      borderRadius: BorderRadius.all(Radius.circular(10))
+      borderRadius: BorderRadius.all(Radius.circular(5))
     ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +40,7 @@ class _JobCardState extends State<JobCard> {
         children: [
           Row(
             children: [
-              Expanded(flex: 18, child: Text(jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
+              Expanded(flex: 18, child: Text(widget.jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
               Expanded(flex: 1, child: Container()),
               Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
                 if (isStarred == false )
@@ -55,10 +56,27 @@ class _JobCardState extends State<JobCard> {
               });}, child: isStarred == true ? Icon(Icons.star, color: Colors.blueAccent,) : Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
             ],
           ),
-          SizedBox(height: 4,),
-          Text(companyName),
-          SizedBox(height: 4,),
-          Text(jobType),
+          SizedBox(height: 5,),
+          Text(widget.companyName),
+          SizedBox(height: 5,),
+          // Text(widget.jobType[0] + ", " + widget.jobType[1]),
+          Row(
+            children: widget.jobType.map((e) {
+              return Container(
+                padding: EdgeInsets.fromLTRB(6, 4, 6, 4),
+                margin: EdgeInsets.only(right: 5),
+                child: Text(
+                  e,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: ColorPalette.secondaryColorDark,
+                  ),
+                ),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(3)),
+              );
+            }).toList()),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -66,9 +84,9 @@ class _JobCardState extends State<JobCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Salary Range: $salaryRangeStart - $salaryRangeEnd"),
+                    Text("Salary Range: " + widget.salaryRangeStart.toString()  + "TK - " + widget.salaryRangeEnd.toString() + "TK"),
                     SizedBox(height: 4,),
-                    Text("Posted: $date"),
+                    Text("Posted: " + widget.postedDate),
                   ],
                 ),
               ),
@@ -80,6 +98,6 @@ class _JobCardState extends State<JobCard> {
     ),
 
   ),
-    ));
+    );
   }
 }
