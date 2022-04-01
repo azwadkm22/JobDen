@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_den/color_palette.dart';
-import 'package:job_den/views/JobCard.dart';
+import 'package:job_den/views/home_page/widgets/JobCard.dart';
 import 'package:job_den/views/JobPostCard.dart';
 
 class HomeScreen extends StatelessWidget {

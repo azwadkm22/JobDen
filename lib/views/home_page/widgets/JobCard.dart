@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_den/color_palette.dart';
-import 'package:job_den/views/view_details_button.dart';
+import 'package:job_den/views/home_page/widgets/view_details_button.dart';
+
+import '../../../generic_button.dart';
 
 class JobCard extends StatefulWidget {
   final String jobTitle;
@@ -69,6 +71,7 @@ class _JobCardState extends State<JobCard> {
                   e,
                   style: const TextStyle(
                     fontSize: 13,
+                    fontWeight: FontWeight.bold,
                     color: ColorPalette.secondaryColorDark,
                   ),
                 ),
