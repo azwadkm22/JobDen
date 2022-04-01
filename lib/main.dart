@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_den/views/home_screen.dart';
+import 'package:job_den/views/home_page/home_screen.dart';
+import 'package:job_den/views/job_details_page/job_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,15 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: JobDetailsScreen(jobTitle: "jobTitle",
+          jobDesc: "Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum  Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum ",
+          qualifications: ["Need to do shit", "Gotta control Shit", "Need to do shit",  "Gotta control Shit", "Need to do shit"],
+          companyName: "Asia Industries Limited",
+          location: "Dhaka",
+          jobType: ["Remote","Internship","Onsite",],
+          jobField: "jobField",
+          salaryRangeStart: 1000,
+          salaryRangeEnd: 1000),
     );
   }
 }

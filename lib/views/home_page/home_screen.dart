@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_den/color_palette.dart';
-import 'package:job_den/views/JobCard.dart';
+import 'package:job_den/views/home_page/widgets/JobCard.dart';
 import 'package:job_den/views/JobPostCard.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,7 +21,13 @@ class HomeScreen extends StatelessWidget {
                 shrinkWrap: true,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return JobCard();
+                    return JobCard(
+                      jobTitle: "Software Engineer",
+                      jobType: ["Remote", "Internship"],
+                      postedDate: "10/10/2022",
+                      companyName: "Beximco",
+                      salaryRangeStart: 10,
+                      salaryRangeEnd: 100,);
                       // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
                     // );
                   },),
