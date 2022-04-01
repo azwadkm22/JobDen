@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:job_den/color_palette.dart';
-import 'package:job_den/generic_button.dart';
+import 'package:job_den/views/common_widgets/color_palette.dart';
+import 'package:job_den/views/common_widgets/generic_button.dart';
+import 'package:job_den/views/common_widgets/job_field_list_view.dart';
 
 class JobDetailsScreen extends StatelessWidget {
   final String jobTitle;
@@ -13,7 +14,7 @@ class JobDetailsScreen extends StatelessWidget {
   final int salaryRangeStart;
   final int salaryRangeEnd;
 
-  JobDetailsScreen({Key? key,
+  const JobDetailsScreen({Key? key,
   required this.jobTitle,
   required this.jobDesc,
   required this.qualifications, //Not in SDD
@@ -85,23 +86,7 @@ class JobDetailsScreen extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(flex: 2, child: Text("Job Type: ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: ColorPalette.blue),)),
-                    Expanded(flex: 5, child: Row(
-                        children: jobType.map((e) {
-                          return Container(
-                            padding: EdgeInsets.fromLTRB(6, 4, 6, 4),
-                            margin: EdgeInsets.only(right: 5),
-                            child: Text(
-                              e,
-                              style: const TextStyle(
-                                fontSize: 13,
-                                color: ColorPalette.secondaryColorDark,
-                              ),
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(3)),
-                          );
-                        }).toList())),
+                    Expanded(flex: 5, child: JobFieldListView(jobType: jobType,)),
                   ],
                 ),
                 SizedBox(height: 20,),

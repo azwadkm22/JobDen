@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'color_palette.dart';
 
 class GenericButton extends SizedBox {
