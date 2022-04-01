@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_den/color_palette.dart';
-import 'package:job_den/views/home_page/widgets/JobCard.dart';
-import 'package:job_den/views/JobPostCard.dart';
+import 'package:job_den/views/common_widgets/color_palette.dart';
+import 'package:job_den/views/home/widgets/JobCard.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

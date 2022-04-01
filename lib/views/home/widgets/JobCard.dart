@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_den/color_palette.dart';
-import 'package:job_den/views/home_page/widgets/view_details_button.dart';
+import 'package:job_den/views/common_widgets/job_field_list_view.dart';
 
-import '../../../generic_button.dart';
+import '../../home/widgets/view_details_button.dart';
+
 
 class JobCard extends StatefulWidget {
   final String jobTitle;
@@ -62,24 +61,7 @@ class _JobCardState extends State<JobCard> {
           Text(widget.companyName),
           SizedBox(height: 5,),
           // Text(widget.jobType[0] + ", " + widget.jobType[1]),
-          Row(
-            children: widget.jobType.map((e) {
-              return Container(
-                padding: EdgeInsets.fromLTRB(6, 4, 6, 4),
-                margin: EdgeInsets.only(right: 5),
-                child: Text(
-                  e,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: ColorPalette.secondaryColorDark,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(3)),
-              );
-            }).toList()),
+          JobFieldListView(jobType: widget.jobType),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
