@@ -43,9 +43,15 @@ class _JobCardState extends State<JobCard> {
               Expanded(flex: 1, child: Container()),
               Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
                 if (isStarred == false )
+                  {
                   isStarred = true;
+                  //Add to starred
+                  }
                 else if (isStarred = true)
-                  isStarred = false;
+                  {
+                    isStarred = false;
+                    //remove from starred
+                  }
               });}, child: isStarred == true ? Icon(Icons.star, color: Colors.blueAccent,) : Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
             ],
           ),
