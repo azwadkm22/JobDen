@@ -16,11 +16,11 @@ class JobFieldListView extends StatelessWidget {
               e,
               style: const TextStyle(
                 fontSize: 13,
-                color: ColorPalette.secondaryColorDark,
+                color: ColorPalette.black,
               ),
             ),
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorPalette.white,
                 borderRadius: BorderRadius.circular(3)),
           );
         }).toList());

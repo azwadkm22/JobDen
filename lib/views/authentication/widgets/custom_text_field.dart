@@ -26,7 +26,7 @@ class CustomTextField extends Container {
               decoration: InputDecoration(
                 hintText: hintText,
                 hintStyle: TextStyle(
-                  color: ColorPalette.black.withOpacity(.5),
+                  color: ColorPalette.blue,
                 ),
                 enabledBorder: InputBorder.none,
                 focusedBorder: InputBorder.none,
