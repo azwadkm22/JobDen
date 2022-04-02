@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_den/views/add_details/add_details_screen.dart';
 import 'package:job_den/views/authentication/login_page.dart';
 import 'package:job_den/views/authentication/password_change_request_page.dart';
 import 'package:job_den/views/authentication/sign_up_page.dart';
@@ -30,9 +31,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
+          AddDetailsScreen(),
         // LoginPage()
       // SignUpPage()
-      HomeScreen(),
+      // HomeScreen(),
       // PasswordChangeRequestPage()
 
       // JobDetailsScreen(jobTitle: "jobTitle",

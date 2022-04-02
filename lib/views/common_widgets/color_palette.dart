@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorPalette {
   static const Color backgroundColor = Color(0xffDEDEDE);
+  static const Color white = Color(0xffEDEDED);
   static const Color secondaryColor = Color(0xFFaaaaaa);
   static const Color secondaryColorDark = Color(0xFF3D3D3D);
   static const Color textColor = Color(0xFFdedede);
