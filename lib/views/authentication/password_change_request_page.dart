@@ -5,6 +5,7 @@ import 'package:job_den/views/authentication/widgets/positioned_logo.dart';
 import 'package:job_den/views/authentication/widgets/pressable_texts.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 
+import '../../commons/controller.dart';
 import '../common_widgets/color_palette.dart';
 
 class PasswordChangeRequestPage extends StatelessWidget {
@@ -61,7 +62,7 @@ class PasswordChangeRequestPage extends StatelessWidget {
             SizedBox(height: 40),
 
             SubmitButton(text: 'Send Request', onPressed: () {
-              // authController.resetPassword(emailController.text);
+              authController.resetPassword(emailController.text);
             },),
 
             SizedBox(height: 5),

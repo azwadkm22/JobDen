@@ -1,11 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class JobPost {
   String jobPostID;
   String jobTitle;
   String companyName;
-  List<String> qualifications;
+  List<dynamic> qualifications;
   int salaryRangeStart;
   int salaryRangeEnd;
-  List<String> jobType;
+  List<dynamic> jobType;
   DateTime postingDate;
   String jobDesc;
   String location;
@@ -14,8 +16,8 @@ class JobPost {
   DateTime applicationLastDate;
   String jobField;
   JobPost({
-    required this.jobTitle,
     required this.jobPostID,
+    required this.jobTitle,
     required this.companyName,
     required this.qualifications,
     required this.salaryRangeStart,
@@ -28,4 +30,22 @@ class JobPost {
     required this.applicationLastDate,
     required this.location,
     required this.emailForApplying});
+
+  factory JobPost.fromDocumentSnapshot(DocumentSnapshot doc) =>
+      JobPost(
+        jobPostID: doc['jobPostID'],
+        jobTitle: doc['jobTitle'],
+        companyName: doc["companyName"],
+        qualifications: doc["qualifications"],
+        salaryRangeStart: doc["salaryRangeStart"],
+        salaryRangeEnd: doc["salaryRangeEnd"],
+        jobDesc: doc["jobDesc"],
+        jobType: doc["jobType"],
+        jobField: doc["jobField"],
+        posterID: doc["posterID"],
+        postingDate: doc["postingDate"].toDate(),
+        applicationLastDate: doc["applicationLastDate"].toDate(),
+        location: doc["location"],
+        emailForApplying: doc["emailForApplying"],
+      );
 }

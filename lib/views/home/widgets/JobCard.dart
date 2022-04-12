@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_den/models/job_post.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
+import 'package:job_den/views/job_details/job_details_screen.dart';
 
 import '../../home/widgets/view_details_button.dart';
 
 
 class JobCard extends StatefulWidget {
-  final String jobTitle;
-  final String companyName;
-  final List jobType;// = ["Remote", "Internship"];
-  final int salaryRangeStart;// = 10;
-  final int salaryRangeEnd;// = 100;
-  final String postedDate;// = "10/11/21";
-  JobCard({Key? key, required this.jobTitle, required this.companyName, required this.jobType, required this.salaryRangeStart, required this.salaryRangeEnd, required this.postedDate }) : super(key: key);
+  final JobPost jobPost;
+  JobCard({Key? key, required this.jobPost}) : super(key: key);
 
 
   @override
@@ -19,13 +17,12 @@ class JobCard extends StatefulWidget {
 }
 
 class _JobCardState extends State<JobCard> {
-  String jobTitle = "Job Title";
   bool isStarred = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //Take to JobViewPage
+        Get.to(() => JobDetailsScreen(jobPost: widget.jobPost,));
       },
   child: Container(
     padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 2),
@@ -41,7 +38,7 @@ class _JobCardState extends State<JobCard> {
         children: [
           Row(
             children: [
-              Expanded(flex: 18, child: Text(widget.jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
+              Expanded(flex: 18, child: Text(widget.jobPost.jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
               Expanded(flex: 1, child: Container()),
               Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
                 if (isStarred == false )
@@ -58,10 +55,10 @@ class _JobCardState extends State<JobCard> {
             ],
           ),
           SizedBox(height: 5,),
-          Text(widget.companyName),
+          Text(widget.jobPost.companyName),
           SizedBox(height: 5,),
           // Text(widget.jobType[0] + ", " + widget.jobType[1]),
-          JobFieldListView(jobType: widget.jobType),
+          JobFieldListView(jobType: widget.jobPost.jobType),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -69,9 +66,9 @@ class _JobCardState extends State<JobCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Salary Range: " + widget.salaryRangeStart.toString()  + "TK - " + widget.salaryRangeEnd.toString() + "TK"),
+                    Text("Salary Range: " + widget.jobPost.salaryRangeStart.toString()  + "TK - " + widget.jobPost.salaryRangeEnd.toString() + "TK"),
                     SizedBox(height: 4,),
-                    Text("Posted: " + widget.postedDate),
+                    Text("Posted: " + widget.jobPost.postingDate.toString()),
                   ],
                 ),
               ),

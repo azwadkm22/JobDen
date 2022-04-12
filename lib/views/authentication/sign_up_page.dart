@@ -5,6 +5,7 @@ import 'package:job_den/views/authentication/widgets/pressable_texts.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 
+import '../../commons/controller.dart';
 import 'widgets/custom_text_field.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -42,9 +43,8 @@ class SignUpPage extends StatelessWidget {
             SubmitButton(
               text: "Register",
               onPressed: () {
-                //Previous Code
-                // authController.createUser(
-                // emailController.text, passwordController.text);
+                authController.createUser(
+                  emailController.text, passwordController.text);
               },
             ),
 
