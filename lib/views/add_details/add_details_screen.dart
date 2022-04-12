@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_den/views/authentication/widgets/pressable_texts.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 
@@ -9,7 +8,6 @@ import '../authentication/widgets/custom_text_field.dart';
 class AddDetailsScreen extends StatelessWidget {
   final TextEditingController fNameController = TextEditingController();
   final TextEditingController lNameController = TextEditingController();
-
   final TextEditingController dobController = TextEditingController();
   // Date add korte hobe
   final TextEditingController fieldController = TextEditingController();
@@ -33,12 +31,12 @@ class AddDetailsScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorPalette.backgroundColor,
-        bottom: PreferredSize(
-            child: Container(
-              color: ColorPalette.blue,
-              height: 4.0,
-            ),
-            preferredSize: Size.fromHeight(4.0)),
+        // bottom: PreferredSize(
+        //     child: Container(
+        //       color: ColorPalette.blue,
+        //       height: 4.0,
+        //     ),
+        //     preferredSize: Size.fromHeight(4.0)),
       )
     );
   }
