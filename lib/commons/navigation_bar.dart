@@ -12,9 +12,10 @@ class AppNavigationBar extends BottomNavigationBar {
   AppNavigationBar({
     required int index,
     Color bgColor = ColorPalette.black,
-    Color unselectedColor = ColorPalette.backgroundColor,
+    Color unselectedColor = ColorPalette.secondaryColor,
     Color selectedColor = ColorPalette.blue,
   }) : super(
+    type: BottomNavigationBarType.fixed,
     onTap: (int index) {
       if (index == 0) {
         Get.offAll(() =>
@@ -40,6 +41,7 @@ class AppNavigationBar extends BottomNavigationBar {
     },
     unselectedItemColor: unselectedColor,
     selectedItemColor: selectedColor,
+    backgroundColor: bgColor,
     currentIndex: index,
     items: [
       BottomNavigationBarItem(
@@ -49,7 +51,7 @@ class AppNavigationBar extends BottomNavigationBar {
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.add_circle_outline),
-        label: "Add Job Post",
+        label: "Add Post",
         backgroundColor: bgColor,
       ),
       BottomNavigationBarItem(
