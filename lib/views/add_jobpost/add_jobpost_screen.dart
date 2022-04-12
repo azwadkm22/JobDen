@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:job_den/views/authentication/widgets/submit_button.dart';
+import 'package:job_den/commons/navigation_bar.dart';
+import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 
-import '../authentication/widgets/custom_text_field.dart';
+import '../authentication/widgets/submit_button.dart';
 
-
-class AddDetailsScreen extends StatelessWidget {
+class AddJobPostScreen extends StatelessWidget {
+  // const AddJobPostScreen({Key? key}) : super(key: key);
   final TextEditingController fNameController = TextEditingController();
   final TextEditingController lNameController = TextEditingController();
   final TextEditingController dobController = TextEditingController();
@@ -19,28 +20,28 @@ class AddDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorPalette.backgroundColor,
-      body: _buildContent(),
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          "Add Personal Information",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: ColorPalette.black,
-              // fontFamily: FontResource.secondaryFont
-          ),
-        ),
         backgroundColor: ColorPalette.backgroundColor,
-        // bottom: PreferredSize(
-        //     child: Container(
-        //       color: ColorPalette.blue,
-        //       height: 4.0,
-        //     ),
-        //     preferredSize: Size.fromHeight(4.0)),
-      )
+        bottomNavigationBar: AppNavigationBar(index: 1,),
+        body: _buildContent(),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            "Add Personal Information",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: ColorPalette.black,
+              // fontFamily: FontResource.secondaryFont
+            ),
+          ),
+          backgroundColor: ColorPalette.backgroundColor,
+          bottom: PreferredSize(
+              child: Container(
+                color: ColorPalette.blue,
+                height: 4.0,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
+        )
     );
   }
-
   Widget _buildContent() {
     return SafeArea(
       child: SingleChildScrollView(
@@ -69,7 +70,7 @@ class AddDetailsScreen extends StatelessWidget {
 
 
             SubmitButton(
-              text: "Create Profile",
+                text: "Post",
               onPressed: () {
                 //Previous Code
                 // authController.createUser(
