@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_den/views/authentication/password_change_request_page.dart';
+import 'package:job_den/views/authentication/sign_up_page.dart';
 
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
 import 'package:job_den/views/authentication/widgets/positioned_logo.dart';
 import 'package:job_den/views/authentication/widgets/pressable_texts.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
+
+import '../../commons/controller.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -36,7 +41,7 @@ class LoginPage extends StatelessWidget {
             PressableText(
               alignment: Alignment.bottomRight,
               onPressed: () {
-                // Get.to(() => PasswordChangeRequestPage());
+                Get.to(() => PasswordChangeRequestPage());
               },
               highlightedText: "Forgot Password?",
             ),
@@ -44,13 +49,13 @@ class LoginPage extends StatelessWidget {
             SubmitButton(
               text: "Login",
               onPressed: () {
-                // authController.login(
-                //     emailController.text, passwordController.text);
+                authController.login(
+                     emailController.text, passwordController.text);
               },
             ),
             PressableText(
               onPressed: () {
-                // Get.to(() => SignUpPage());
+                Get.to(() => SignUpPage());
               },
               highlightedText: "Register Now",
               unhighlightedText: "Don't have an account? ",
