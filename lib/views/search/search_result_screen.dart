@@ -14,6 +14,23 @@ class SearchResultScreen extends StatelessWidget {
       backgroundColor: ColorPalette.backgroundColor,
       body: _buildContent(),
       bottomNavigationBar: AppNavigationBar(index: 2),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "Search Results",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: ColorPalette.black,
+            // fontFamily: FontResource.secondaryFont
+          ),
+        ),
+        backgroundColor: ColorPalette.backgroundColor,
+        bottom: PreferredSize(
+            child: Container(
+              color: ColorPalette.blue,
+              height: 4.0,
+            ),
+            preferredSize: Size.fromHeight(4.0)),
+      ),
     );
   }
 

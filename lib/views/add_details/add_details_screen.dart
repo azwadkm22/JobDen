@@ -31,12 +31,12 @@ class AddDetailsScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorPalette.backgroundColor,
-        // bottom: PreferredSize(
-        //     child: Container(
-        //       color: ColorPalette.blue,
-        //       height: 4.0,
-        //     ),
-        //     preferredSize: Size.fromHeight(4.0)),
+        bottom: PreferredSize(
+            child: Container(
+              color: ColorPalette.blue,
+              height: 4.0,
+            ),
+            preferredSize: Size.fromHeight(4.0)),
       )
     );
   }
