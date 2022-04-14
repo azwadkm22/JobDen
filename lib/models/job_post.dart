@@ -13,7 +13,6 @@ class JobPost {
   String location;
   String posterID;
   String emailForApplying;
-  DateTime applicationLastDate;
   String jobField;
   JobPost({
     required this.jobPostID,
@@ -27,13 +26,12 @@ class JobPost {
     required this.jobField,
     required this.posterID,
     required this.postingDate,
-    required this.applicationLastDate,
     required this.location,
     required this.emailForApplying});
 
   factory JobPost.fromDocumentSnapshot(DocumentSnapshot doc) =>
       JobPost(
-        jobPostID: doc['jobPostID'],
+        jobPostID: doc.reference.id,
         jobTitle: doc['jobTitle'],
         companyName: doc["companyName"],
         qualifications: doc["qualifications"],
@@ -43,8 +41,7 @@ class JobPost {
         jobType: doc["jobType"],
         jobField: doc["jobField"],
         posterID: doc["posterID"],
-        postingDate: doc["postingDate"].toDate(),
-        applicationLastDate: doc["applicationLastDate"].toDate(),
+        postingDate: DateTime.fromMillisecondsSinceEpoch(doc["postingDate"]),
         location: doc["location"],
         emailForApplying: doc["emailForApplying"],
       );
