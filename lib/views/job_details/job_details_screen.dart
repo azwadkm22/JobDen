@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/generic_button.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
@@ -16,6 +17,24 @@ class JobDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorPalette.backgroundColor,
       body: _buildContent(),
+      bottomNavigationBar: AppNavigationBar(index: 0,),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "Job Details",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: ColorPalette.black,
+            // fontFamily: FontResource.secondaryFont
+          ),
+        ),
+        backgroundColor: ColorPalette.backgroundColor,
+        bottom: PreferredSize(
+            child: Container(
+              color: ColorPalette.blue,
+              height: 4.0,
+            ),
+            preferredSize: Size.fromHeight(4.0)),
+      ),
     );
   }
 

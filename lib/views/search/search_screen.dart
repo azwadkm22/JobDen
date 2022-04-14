@@ -6,6 +6,7 @@ import 'package:job_den/views/search/widgets/search_bar.dart';
 
 import '../authentication/widgets/custom_text_field.dart';
 import '../authentication/widgets/submit_button.dart';
+import '../common_widgets/color_palette.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -30,7 +31,24 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       // backgroundColor: Colors.white12,
         body: _buildContent(),
-        bottomNavigationBar: AppNavigationBar(index: 2)
+        bottomNavigationBar: AppNavigationBar(index: 2),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "Search Jobs",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: ColorPalette.black,
+            // fontFamily: FontResource.secondaryFont
+          ),
+        ),
+        backgroundColor: ColorPalette.backgroundColor,
+        bottom: PreferredSize(
+            child: Container(
+              color: ColorPalette.blue,
+              height: 4.0,
+            ),
+            preferredSize: Size.fromHeight(4.0)),
+      ),
     );
   }
 
@@ -42,7 +60,6 @@ class _SearchScreenState extends State<SearchScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchBar(),
             SizedBox(height: 8),
             BoldText("Salary Range"),
             RangeSlider(

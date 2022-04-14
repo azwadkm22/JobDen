@@ -15,14 +15,19 @@ class SearchController extends GetxController{
   void searchJobs(bool isInternship, bool isPartTime, bool isRemote, bool isFullTime, String location, int salaryRangeStart, int salaryRangeEnd, String field){
     jobPostList.clear();
     for (var element in jobPostController.jobPostList) {
-      if(element.salaryRangeStart < salaryRangeStart && element.salaryRangeEnd > salaryRangeEnd) continue;
+      // if(element.salaryRangeStart < salaryRangeStart && element.salaryRangeEnd > salaryRangeEnd) continue;
+      if(element.salaryRangeStart > salaryRangeEnd) continue;
+      if(element.salaryRangeEnd < salaryRangeStart) continue;
+
       if(isInternship && !element.jobType.contains("Internship")) continue;
       if(isPartTime && !element.jobType.contains("Part Time")) continue;
       if(isFullTime && !element.jobType.contains("Full Time")) continue;
       if(isRemote && !element.jobType.contains("Remote")) continue;
       if(location.compareTo(element.location) != 0) continue;
       if(field != "" && field.compareTo(element.jobField) != 0) continue;
+
       jobPostList.add(element);
+
     }
     Get.to(() => SearchResultScreen());
   }
