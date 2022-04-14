@@ -11,12 +11,14 @@ import 'package:job_den/views/job_details/job_details_screen.dart';
 import 'package:job_den/views/placeholder_screen.dart';
 
 import 'controllers/auth_controller.dart';
+import 'controllers/search_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Get.put(AuthController());
   Get.put(JobPostController());
+  Get.put(SearchController());
   runApp(const MyApp());
 }
 

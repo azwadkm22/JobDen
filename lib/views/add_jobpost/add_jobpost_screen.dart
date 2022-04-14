@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
@@ -25,7 +26,6 @@ class _AddJobPostState extends State<AddJobPostScreen> {
   TextEditingController jobTitleController = TextEditingController();
   TextEditingController descController = TextEditingController();
   TextEditingController companyController = TextEditingController();
-  TextEditingController applyByDateController = TextEditingController();
 
 
 
@@ -190,20 +190,16 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               ],
             ),
 
-
-            SizedBox(height: 8),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(flex: 1, child: BoldText("Apply By")),
-                Expanded(flex: 3,child: CustomTextField(controller: applyByDateController, hintText: "e.g. Computer Science",),),
-              ],
-            ),
             SizedBox(height: 18),
 
             SubmitButton(text: "Post", onPressed: () {
               //Post Job
+              List<String> jobTypeArray = [];
+              if(isInternship) jobTypeArray.add("Internship");
+              if(isPartTime) jobTypeArray.add("Part Time");
+              if(isFullTime) jobTypeArray.add("Full Time");
+              if(isRemote) jobTypeArray.add("Remote");
+              jobPostController.addJobPost(jobTitleController.text, companyController.text, ["BA"], salaryRange.start.round(), salaryRange.end.round(), jobTypeArray, descController.text, location, fieldController.text);
             },),
           ],
         ),

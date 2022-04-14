@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_den/commons/bold_text.dart';
+import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/search/widgets/search_bar.dart';
 
@@ -143,7 +144,7 @@ class _SearchScreenState extends State<SearchScreen> {
             SizedBox(height: 18),
 
             SubmitButton(text: "Search", onPressed: () {
-              //Do Stuff same as SearchBar
+              searchController.searchJobs(isInternship, isPartTime, isRemote, isFullTime, location, salaryRange.start.round(), salaryRange.end.round(), fieldController.text);
             },),
           ],
         ),
