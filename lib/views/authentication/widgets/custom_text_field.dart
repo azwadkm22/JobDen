@@ -6,11 +6,12 @@ class CustomTextField extends Container {
   CustomTextField({
     required controller,
     required hintText,
+    smallMargin = false,
     bool isPassword = false,
   }) :
         super(
             padding: EdgeInsets.only(left: 10, right: 10),
-            margin: EdgeInsets.fromLTRB(30, 0, 30, 10),
+            margin: smallMargin ? EdgeInsets.all(0) : EdgeInsets.fromLTRB(30, 0, 30, 10),
             decoration: BoxDecoration(
               color: Color(0xffcdcdcd),
               borderRadius: BorderRadius.circular(5),
@@ -20,12 +21,12 @@ class CustomTextField extends Container {
 
               obscureText: isPassword,
               controller: controller,
-              style: TextStyle(
+              style: const TextStyle(
                 color: ColorPalette.black,
               ),
               decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: ColorPalette.blue,
                 ),
                 enabledBorder: InputBorder.none,

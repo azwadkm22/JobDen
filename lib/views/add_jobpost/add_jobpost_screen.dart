@@ -3,9 +3,11 @@ import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
+import 'package:job_den/views/common_widgets/custom_app_bar.dart';
 
 import '../../commons/bold_text.dart';
 import '../authentication/widgets/submit_button.dart';
+import '../common_widgets/ExtendableTextField.dart';
 
 class AddJobPostScreen extends StatefulWidget {
   const AddJobPostScreen({Key? key}) : super(key: key);
@@ -35,23 +37,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
       // backgroundColor: Colors.white12,
         body: _buildContent(),
         bottomNavigationBar: AppNavigationBar(index: 1),
-      appBar: AppBar(
-      centerTitle: true,
-      title: const Text(
-        "New Job Opening",
-        textAlign: TextAlign.center,
-        style: TextStyle(color: ColorPalette.black,
-          // fontFamily: FontResource.secondaryFont
-        ),
-      ),
-      backgroundColor: ColorPalette.backgroundColor,
-      // bottom: PreferredSize(
-      //     child: Container(
-      //       color: ColorPalette.blue,
-      //       height: 4.0,
-      //     ),
-      //     preferredSize: Size.fromHeight(4.0)),
-    ),
+      appBar: CustomAppBar(label: "New Job Opening",)
     );
   }
 
@@ -69,7 +55,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(flex: 1, child: BoldText("Job Title")),
-                Expanded(flex: 3,child: CustomTextField(controller: jobTitleController, hintText: "e.g. Computer Science",),),
+                Expanded(flex: 3,child: CustomTextField(controller: jobTitleController, hintText: "e.g. Junior Developer",),),
               ],
             ),
 
@@ -79,7 +65,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(flex: 1, child: BoldText("Description")),
-                Expanded(flex: 3,child: CustomTextField(controller: descController, hintText: "e.g. Computer Science",),),
+                Expanded(flex: 3,child: ExtendableTextField(controller: descController, hintText: "Brief description of the job and what it offers.",),),
               ],
             ),
 
@@ -88,7 +74,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(flex: 1, child: BoldText("Company")),
-                Expanded(flex: 3,child: CustomTextField(controller: companyController, hintText: "e.g. Computer Science",),),
+                Expanded(flex: 3,child: CustomTextField(controller: companyController, hintText: "e.g. Google, Amazon, RFL",),),
               ],
             ),
             SizedBox(height: 8),
@@ -201,6 +187,8 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               if(isRemote) jobTypeArray.add("Remote");
               jobPostController.addJobPost(jobTitleController.text, companyController.text, ["BA"], salaryRange.start.round(), salaryRange.end.round(), jobTypeArray, descController.text, location, fieldController.text);
             },),
+
+            SizedBox(height: 20),
           ],
         ),
       ),

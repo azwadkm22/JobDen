@@ -6,6 +6,7 @@ import 'package:job_den/views/add_details/add_details_screen.dart';
 import 'package:job_den/views/authentication/login_page.dart';
 import 'package:job_den/views/authentication/password_change_request_page.dart';
 import 'package:job_den/views/authentication/sign_up_page.dart';
+import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/home/home_screen.dart';
 import 'package:job_den/views/job_details/job_details_screen.dart';
 import 'package:job_den/views/placeholder_screen.dart';
