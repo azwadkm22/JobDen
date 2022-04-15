@@ -25,20 +25,20 @@ class StarredScreen extends StatelessWidget {
 
   Widget _buildContent() {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Obx( () {
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: jobPostList.length,
-            itemBuilder: (context, index) {
-              return JobCard(
-                jobPost: jobPostList[index],);
-              // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
-              // );
-            },);
-        }
-        ),
+      child: Obx( () {
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: jobPostList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: JobCard(
+                jobPost: jobPostList[index],),
+            );
+            // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
+            // );
+          },);
+      }
       ),
     );
   }
