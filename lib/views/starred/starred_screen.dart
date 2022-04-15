@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
+import 'package:job_den/views/common_widgets/custom_app_bar.dart';
 import 'package:job_den/views/home/widgets/JobCard.dart';
 
 import '../../models/job_post.dart';
@@ -14,29 +15,7 @@ class StarredScreen extends StatelessWidget {
       backgroundColor: ColorPalette.backgroundColor,
       body: _buildContent(),
       bottomNavigationBar: AppNavigationBar(index: 3),
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              "Starred Jobs",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: ColorPalette.black,
-                // fontFamily: FontResource.secondaryFont
-              ),
-            ),
-            Icon(Icons.star, color: ColorPalette.gold,),
-          ],
-        ),
-        backgroundColor: ColorPalette.backgroundColor,
-        bottom: PreferredSize(
-            child: Container(
-              color: ColorPalette.blue,
-              height: 4.0,
-            ),
-            preferredSize: Size.fromHeight(4.0)),
-      ),
+      appBar: CustomAppBar(label: "Starred Jobs",)
     );
   }
 

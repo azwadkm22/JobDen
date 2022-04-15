@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:job_den/commons/bold_text.dart';
 import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
+import 'package:job_den/views/common_widgets/custom_app_bar.dart';
 import 'package:job_den/views/search/widgets/search_bar.dart';
 
 import '../authentication/widgets/custom_text_field.dart';
@@ -32,23 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
       // backgroundColor: Colors.white12,
         body: _buildContent(),
         bottomNavigationBar: AppNavigationBar(index: 2),
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          "Search Jobs",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: ColorPalette.black,
-            // fontFamily: FontResource.secondaryFont
-          ),
-        ),
-        backgroundColor: ColorPalette.backgroundColor,
-        bottom: PreferredSize(
-            child: Container(
-              color: ColorPalette.blue,
-              height: 4.0,
-            ),
-            preferredSize: Size.fromHeight(4.0)),
-      ),
+      appBar: CustomAppBar(label: "Filter Jobs",)
     );
   }
 

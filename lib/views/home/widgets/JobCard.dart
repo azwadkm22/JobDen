@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_den/models/job_post.dart';
+import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
 import 'package:job_den/views/job_details/job_details_screen.dart';
 
@@ -32,52 +33,72 @@ class _JobCardState extends State<JobCard> {
       color: Color(0xFFC4C4C4),
       borderRadius: BorderRadius.all(Radius.circular(5))
     ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            children: [
-              Expanded(flex: 18, child: Text(widget.jobPost.jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
-              Expanded(flex: 1, child: Container()),
-              Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
-                if (isStarred == false )
-                  {
-                  isStarred = true;
-                  //Add to starred
-                  }
-                else if (isStarred = true)
-                  {
-                    isStarred = false;
-                    //remove from starred
-                  }
-              });}, child: isStarred == true ? Icon(Icons.star, color: Colors.blueAccent,) : Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
-            ],
-          ),
-          SizedBox(height: 5,),
-          Text(widget.jobPost.companyName),
-          SizedBox(height: 5,),
-          // Text(widget.jobType[0] + ", " + widget.jobType[1]),
-          JobFieldListView(jobType: widget.jobPost.jobType),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(flex: 3, child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Salary Range: " + widget.jobPost.salaryRangeStart.toString()  + "TK - " + widget.jobPost.salaryRangeEnd.toString() + "TK"),
-                    SizedBox(height: 4,),
-                    Text("Posted: " + widget.jobPost.postingDate.toString()),
-                  ],
-                ),
-              ),
-              Expanded(flex: 1, child: Container()),
-              Expanded(flex: 2, child: ViewDetailsButton(onPressed: (){},)),
-            ],
-          )
-        ],
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(4, 4, 0, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+          children: [
+
+            // const SizedBox(height: 5,),
+            Row(
+              children: [
+                Expanded(flex: 18, child: Text(widget.jobPost.jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: ColorPalette.blue),)),
+                Expanded(flex: 1, child: Container()),
+                Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
+                  if (isStarred == false )
+                    {
+                    isStarred = true;
+                    //Add to starred
+                    }
+                  else if (isStarred = true)
+                    {
+                      isStarred = false;
+                      //remove from starred
+                    }
+                });}, child: isStarred == true ? Icon(Icons.star, color: Colors.blueAccent,) : Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
+              ],
+            ),
+            const SizedBox(height: 5,),
+            // Text(widget.jobPost.companyName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: ColorPalette.blue),),
+            Row(
+              children: [
+                Text("Company: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
+                Text(widget.jobPost.companyName.toString()),
+              ],
+            ),
+            const SizedBox(height: 5,),
+            // Text(widget.jobType[0] + ", " + widget.jobType[1]),
+            Row(
+              children: [
+                Text("Job Type: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue),),
+                JobFieldListView(jobType: widget.jobPost.jobType),
+              ],
+            ),
+            // Row(
+            const SizedBox(height: 5,),
+
+            Row(
+              children: [
+                Text("Salary Range: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
+                Text(widget.jobPost.salaryRangeStart.toString()  + "BDT - " + widget.jobPost.salaryRangeEnd.toString() + "BDT"),
+              ],
+            ),
+            SizedBox(height: 10,),
+            Row(
+              children: [
+                Text("Posted: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
+                Text(widget.jobPost.postingDate.toString()),
+              ],
+            ),
+
+            const SizedBox(height: 5,),
+                // ),
+            // )
+          ],
     ),
+      ),
 
   ),
     );

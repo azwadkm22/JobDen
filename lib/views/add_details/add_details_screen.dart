@@ -49,7 +49,6 @@ class AddDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-
             CustomTextField(controller: fNameController, hintText: "First Name"),
             SizedBox(height: 5),
             CustomTextField(controller: lNameController, hintText: "Last Name"),
@@ -66,8 +65,6 @@ class AddDetailsScreen extends StatelessWidget {
             SizedBox(height: 5),
             CustomTextField(controller: phoneController, hintText: "Phone No"),
             SizedBox(height: 10),
-
-
             SubmitButton(
               text: "Create Profile",
               onPressed: () {
