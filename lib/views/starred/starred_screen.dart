@@ -31,7 +31,7 @@ class StarredScreen extends StatelessWidget {
           itemCount: jobPostList.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(1.0),
+              padding: const EdgeInsets.all(10.0),
               child: JobCard(
                 jobPost: jobPostList[index],),
             );
