@@ -1,14 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/custom_app_bar.dart';
 import 'package:job_den/views/common_widgets/generic_button.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
-
+import 'package:open_mail_app/open_mail_app.dart';
 import '../../commons/controller.dart';
-import '../../controllers/auth_controller.dart';
 import '../../models/job_post.dart';
-import '../common_widgets/logout_button.dart';
 
 class JobDetailsScreen extends StatelessWidget {
   final JobPost jobPost;
@@ -21,18 +20,18 @@ class JobDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorPalette.backgroundColor,
-      body: _buildContent(),
+      body: _buildContent(context),
       bottomNavigationBar: AppNavigationBar(index: 0,),
       appBar: CustomAppBar(label: "Job Details",)
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: SingleChildScrollView(
-            controller: new ScrollController(),
+            controller: ScrollController(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,8 +102,8 @@ class JobDetailsScreen extends StatelessWidget {
                 const SizedBox(height: 20,),
                 Row(
                   children: [
-                    const Expanded(flex: 2, child: Text("Posted By: ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: ColorPalette.blue),)),
-                    Expanded(flex: 5, child: Text(jobPost.posterID, style: const TextStyle(fontSize: 20, color: ColorPalette.black),),),
+                    const Expanded(flex: 2, child: Text("Posted On: ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: ColorPalette.blue),)),
+                    Expanded(flex: 5, child: Text(jobPost.postingDate.toString(), style: const TextStyle(fontSize: 20, color: ColorPalette.black),),),
                     // Use getUserEmailbyID in the above code ^
                   ],
                 ),
@@ -115,16 +114,57 @@ class JobDetailsScreen extends StatelessWidget {
                     {
                       //Delete JobPost
                     },) :
-                  GenericButton(label: 'Apply', onPressed: ()
-                  {
-                    //Apply to Job
-                  },
+                  GenericButton(label: 'Apply',
+                      onPressed: () async {
+                        EmailContent email = EmailContent(
+                          to: [
+                            jobPost.emailForApplying,
+                          ],
+                          subject: 'Applying for the Job Opening.',
+                          body: 'Attach your CV as well as a formal cover letter.',
+                        );
+
+                        OpenMailAppResult result =
+                        await OpenMailApp.composeNewEmailInMailApp(
+                            nativePickerTitle: 'Select email app',
+                            emailContent: email);
+                        if (!result.didOpen && !result.canOpen) {
+                          showNoMailAppsDialog(context);
+                        } else if (!result.didOpen && result.canOpen) {
+                          showDialog(
+                            context: context,
+                            builder: (_) => MailAppPickerDialog(
+                              mailApps: result.options,
+                              emailContent: email,
+                            ),
+                          );
+                        }
+                      },
                   ),
-                )
+                ),
               ],
             ),
           ),
         ),
     );
   }
+}
+
+void showNoMailAppsDialog(BuildContext context) {
+  showDialog(
+    builder: (context) {
+      return AlertDialog(
+        title: const Text("Open Mail App"),
+        content: const Text("No mail apps installed"),
+        actions: <Widget>[
+          TextButton(
+            child: const Text("OK"),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
+        ],
+      );
+    }, context: context,
+  );
 }

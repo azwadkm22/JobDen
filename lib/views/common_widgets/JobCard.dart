@@ -5,8 +5,6 @@ import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
 import 'package:job_den/views/job_details/job_details_screen.dart';
 
-import '../../home/widgets/view_details_button.dart';
-
 
 class JobCard extends StatefulWidget {
   final JobPost jobPost;
@@ -27,7 +25,7 @@ class _JobCardState extends State<JobCard> {
       },
   child: Container(
     padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 2),
-    margin: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
+    // margin: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
 
     decoration: const BoxDecoration(
       color: Color(0xFFC4C4C4),
@@ -44,7 +42,7 @@ class _JobCardState extends State<JobCard> {
             // const SizedBox(height: 5,),
             Row(
               children: [
-                Expanded(flex: 18, child: Text(widget.jobPost.jobTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: ColorPalette.blue),)),
+                Expanded(flex: 18, child: Text(widget.jobPost.jobTitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: ColorPalette.blue),)),
                 Expanded(flex: 1, child: Container()),
                 Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
                   if (isStarred == false )
@@ -57,14 +55,14 @@ class _JobCardState extends State<JobCard> {
                       isStarred = false;
                       //remove from starred
                     }
-                });}, child: isStarred == true ? Icon(Icons.star, color: Colors.blueAccent,) : Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
+                });}, child: isStarred == true ? const Icon(Icons.star, color: Colors.blueAccent,) : const Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
               ],
             ),
             const SizedBox(height: 5,),
             // Text(widget.jobPost.companyName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: ColorPalette.blue),),
             Row(
               children: [
-                Text("Company: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
+                const Text("Company: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
                 Text(widget.jobPost.companyName.toString()),
               ],
             ),
@@ -72,7 +70,7 @@ class _JobCardState extends State<JobCard> {
             // Text(widget.jobType[0] + ", " + widget.jobType[1]),
             Row(
               children: [
-                Text("Job Type: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue),),
+                const Text("Job Type: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue),),
                 JobFieldListView(jobType: widget.jobPost.jobType),
               ],
             ),
@@ -81,14 +79,14 @@ class _JobCardState extends State<JobCard> {
 
             Row(
               children: [
-                Text("Salary Range: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
+                const Text("Salary Range: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
                 Text(widget.jobPost.salaryRangeStart.toString()  + "BDT - " + widget.jobPost.salaryRangeEnd.toString() + "BDT"),
               ],
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Row(
               children: [
-                Text("Posted: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
+                const Text("Posted: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
                 Text(widget.jobPost.postingDate.toString()),
               ],
             ),

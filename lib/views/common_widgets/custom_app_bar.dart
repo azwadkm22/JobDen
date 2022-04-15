@@ -11,13 +11,15 @@ class CustomAppBar extends AppBar {
   CustomAppBar({Key? key, required this.label, this.showLogout = true, logoInstead = false}): super(key: key,
   centerTitle: true,
 
-  title: logoInstead ? Row(
-    children: [
-      Expanded(flex:4, child: Container()),
-      Expanded(flex:7, child: Image.asset("assets/icon.png")),
-      Expanded(flex:4, child: Container()),
-    ],
-  )
+  title: logoInstead ?
+  // Row(
+  //   mainAxisAlignment: MainAxisAlignment.center,
+  //   children: [
+  //     Expanded(flex:4, child: Container()),
+      SizedBox(height: 120, child: Image.asset("assets/icon.png"))
+  //     Expanded(flex:4, child: Container()),
+  //   ],
+  // )
       :
   Text(label,
   textAlign: TextAlign.center,
@@ -35,7 +37,7 @@ class CustomAppBar extends AppBar {
   color: ColorPalette.blue,
   height: 4.0,
   ),
-  preferredSize: Size.fromHeight(4.0)),
+  preferredSize: const Size.fromHeight(4.0)),
   actions: showLogout ? [
   LogoutButton(),
   ] : [],

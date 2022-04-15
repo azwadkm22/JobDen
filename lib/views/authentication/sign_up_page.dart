@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             PositionedLogo(),
 
@@ -38,7 +38,7 @@ class SignUpPage extends StatelessWidget {
 
             CustomTextField(controller: confirmPasswordController, hintText: "Confirm Password", isPassword: true),
 
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             SubmitButton(
               text: "Register",
@@ -56,7 +56,7 @@ class SignUpPage extends StatelessWidget {
                 highlightedText: "Sign in."
             ),
 
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
           ],
         ),
       ),

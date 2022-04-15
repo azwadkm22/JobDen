@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import '../../common_widgets/color_palette.dart';
 
 class CustomTextField extends Container {
-  CustomTextField({
+  CustomTextField({Key? key,
     required controller,
     required hintText,
     smallMargin = false,
     bool isPassword = false,
   }) :
-        super(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            margin: smallMargin ? EdgeInsets.all(0) : EdgeInsets.fromLTRB(30, 0, 30, 10),
+        super(key: key,
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            margin: smallMargin ? const EdgeInsets.all(0) : const EdgeInsets.fromLTRB(30, 0, 30, 10),
             decoration: BoxDecoration(
-              color: Color(0xffcdcdcd),
+              color: const Color(0xffcdcdcd),
               borderRadius: BorderRadius.circular(5),
             ),
 

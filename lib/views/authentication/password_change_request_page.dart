@@ -30,8 +30,8 @@ class PasswordChangeRequestPage extends StatelessWidget {
 
             Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
-              child: Text(
+              margin: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+              child: const Text(
                 "Forgot your password?",
                 style: TextStyle(
                   fontSize: 22,
@@ -44,8 +44,8 @@ class PasswordChangeRequestPage extends StatelessWidget {
             // SizedBox(height: 30),
             Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
-              child: Text(
+              margin: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+              child: const Text(
                 "Enter your mail and we will send you a link to reset your password",
                 style: TextStyle(
                   fontSize: 16,
@@ -54,18 +54,18 @@ class PasswordChangeRequestPage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             CustomTextField(controller: emailController, hintText:  "Email"),
 
 
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             SubmitButton(text: 'Send Request', onPressed: () {
               authController.resetPassword(emailController.text);
             },),
 
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
 
             PressableText(
                 onPressed: () {
@@ -75,7 +75,7 @@ class PasswordChangeRequestPage extends StatelessWidget {
                 highlightedText: "Back to Login"),
 
 
-            SizedBox(height: 120),
+            const SizedBox(height: 120),
           ],
         ),
       ),

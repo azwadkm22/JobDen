@@ -13,14 +13,14 @@ class SubmitButton extends Container {
             onPressed: onPressed,
             child: Text(
             text,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.normal,
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.normal,
                 // fontFamily: FontResource.secondaryFont
             ),
             ),
             style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.fromLTRB(45, 12, 45, 12),
+            padding: const EdgeInsets.fromLTRB(45, 12, 45, 12),
             primary: ColorPalette.blue,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)))),
             ),
           );

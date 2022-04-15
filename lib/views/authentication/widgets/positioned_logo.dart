@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PositionedLogo extends Row {
-  PositionedLogo({
+  PositionedLogo({Key? key,
     String assetLink = "assets/icon.png",
 }) :
-        super(
+        super(key: key,
           children: [
           Expanded(
             flex: 1,

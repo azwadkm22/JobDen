@@ -2,13 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_den/controllers/job_post_controller.dart';
-import 'package:job_den/views/add_details/add_details_screen.dart';
-import 'package:job_den/views/authentication/login_page.dart';
-import 'package:job_den/views/authentication/password_change_request_page.dart';
-import 'package:job_den/views/authentication/sign_up_page.dart';
-import 'package:job_den/views/common_widgets/color_palette.dart';
-import 'package:job_den/views/home/home_screen.dart';
-import 'package:job_den/views/job_details/job_details_screen.dart';
 import 'package:job_den/views/placeholder_screen.dart';
 
 import 'controllers/auth_controller.dart';

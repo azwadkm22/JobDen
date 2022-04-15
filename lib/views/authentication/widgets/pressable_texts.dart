@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 class PressableText extends Container {
 
-  PressableText({
+  PressableText({Key? key,
     var alignment = Alignment.center,
     required VoidCallback onPressed,
     String unhighlightedText = "",
     required String highlightedText,
   }) :
-        super(
+        super(key: key,
           alignment: alignment,
-          margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+          margin: const EdgeInsets.fromLTRB(30, 10, 30, 10),
           child: Text.rich(
             TextSpan(
               text: unhighlightedText,
@@ -22,7 +22,7 @@ class PressableText extends Container {
                   text: highlightedText,
                   recognizer: TapGestureRecognizer()
                     ..onTap = onPressed,
-                  style: TextStyle(
+                  style: const TextStyle(
                     decoration: TextDecoration.underline,
                   ),
                 ),

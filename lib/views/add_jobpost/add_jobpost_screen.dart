@@ -22,7 +22,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
   bool isRemote = true;
   bool isFullTime = true;
   String location = "Dhaka";
-  RangeValues salaryRange = RangeValues(10000, 20000);
+  RangeValues salaryRange = const RangeValues(10000, 20000);
   List<String> districts = ['Dhaka', 'Sylhet', 'Rajshahi', 'Chattagram', 'Khulna', 'Barishal', 'Rangpur'];
   TextEditingController fieldController = TextEditingController();
   TextEditingController jobTitleController = TextEditingController();
@@ -50,7 +50,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -59,7 +59,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               ],
             ),
 
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +69,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               ],
             ),
 
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -77,7 +77,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
                 Expanded(flex: 3,child: CustomTextField(controller: companyController, hintText: "e.g. Google, Amazon, RFL",),),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             BoldText("Salary Range"),
             RangeSlider(
               values: salaryRange,
@@ -93,13 +93,13 @@ class _AddJobPostState extends State<AddJobPostScreen> {
                 });
               },
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Column(
               children: [
                 Row(
                   children: [
                     Expanded(flex:5, child: BoldText("Job Type")),
-                    Expanded(flex:4, child: Text("Internship")),
+                    const Expanded(flex:4, child: Text("Internship")),
                     Expanded(flex:6, child: Checkbox(value: isInternship, onChanged: (bool? b) {
                       setState(() {
                         isInternship = b!;
@@ -110,7 +110,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
                 Row(
                   children: [
                     Expanded(flex:5, child: Container()),
-                    Expanded(flex:4, child: Text("Full time")),
+                    const Expanded(flex:4, child: Text("Full time")),
                     Expanded(flex:6, child: Checkbox(value: isFullTime, onChanged: (bool? b) {
                       setState(() {
                         isFullTime = b!;
@@ -121,7 +121,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
                 Row(
                   children: [
                     Expanded(flex:5, child: Container()),
-                    Expanded(flex:4, child: Text("Part time")),
+                    const Expanded(flex:4, child: Text("Part time")),
                     Expanded(flex:6, child: Checkbox(value: isPartTime, onChanged: (bool? b) {
                       setState(() {
                         isPartTime = b!;
@@ -132,7 +132,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
                 Row(
                   children: [
                     Expanded(flex:5, child: Container()),
-                    Expanded(flex:4, child: Text("Remote")),
+                    const Expanded(flex:4, child: Text("Remote")),
                     Expanded(flex:6, child: Checkbox(value: isRemote, onChanged: (bool? b) {
                       setState(() {
                         isRemote = b!;
@@ -143,7 +143,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               ],
             ),
 
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
                 Expanded(flex:5, child: BoldText("Location")),
@@ -167,7 +167,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
                 Expanded(flex:5, child: Container()),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -176,7 +176,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               ],
             ),
 
-            SizedBox(height: 18),
+            const SizedBox(height: 18),
 
             SubmitButton(text: "Post", onPressed: () {
               //Post Job
@@ -188,7 +188,7 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               jobPostController.addJobPost(jobTitleController.text, companyController.text, ["BA"], salaryRange.start.round(), salaryRange.end.round(), jobTypeArray, descController.text, location, fieldController.text);
             },),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

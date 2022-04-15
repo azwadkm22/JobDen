@@ -4,11 +4,13 @@ import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/custom_app_bar.dart';
-import 'package:job_den/views/home/widgets/JobCard.dart';
+import 'package:job_den/views/common_widgets/JobCard.dart';
 
 import '../../models/job_post.dart';
 
 class StarredScreen extends StatelessWidget {
+  StarredScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
