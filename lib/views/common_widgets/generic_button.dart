@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'color_palette.dart';
 
 class GenericButton extends SizedBox {
-  GenericButton({
+  GenericButton({Key? key,
     double padding = 50,
     Color textColor = ColorPalette.textColor,
     double borderRadius = 8,
@@ -11,7 +11,7 @@ class GenericButton extends SizedBox {
     Color color = ColorPalette.blue,
     required VoidCallback onPressed,
   }) :
-        super(
+        super(key: key,
           child: Padding(
             padding: EdgeInsets.all(padding/5),
             child: ElevatedButton(

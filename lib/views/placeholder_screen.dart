@@ -5,6 +5,8 @@ import 'package:job_den/views/authentication/login_page.dart';
 import 'package:job_den/views/home/home_screen.dart';
 
 class PlaceHolderScreen extends StatelessWidget {
+  const PlaceHolderScreen({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {

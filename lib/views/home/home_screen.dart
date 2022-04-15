@@ -4,11 +4,13 @@ import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/custom_app_bar.dart';
-import 'package:job_den/views/home/widgets/JobCard.dart';
+import 'package:job_den/views/common_widgets/JobCard.dart';
 
 import '../../models/job_post.dart';
 
 class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,21 +26,21 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildContent() {
     return SafeArea(
-      child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Obx( () {
-                return ListView.builder(
-                  shrinkWrap: true,
-                    itemCount: jobPostList.length,
-                    itemBuilder: (context, index) {
-                      return JobCard(
-                        jobPost: jobPostList[index],);
-                        // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
-                      // );
-                    },);
-              }
-              ),
-            ),
+      child: Obx( () {
+        return ListView.builder(
+          shrinkWrap: true,
+            itemCount: jobPostList.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: JobCard(
+                  jobPost: jobPostList[index],),
+              );
+                // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
+              // );
+            },);
+      }
+      ),
           );
   }
 }

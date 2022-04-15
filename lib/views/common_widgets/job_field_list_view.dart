@@ -7,7 +7,7 @@ class JobFieldListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 24,
       child: ListView(
         shrinkWrap: true,
@@ -16,8 +16,8 @@ class JobFieldListView extends StatelessWidget {
           children: jobType.map((e) {
             return Container(
               height: 20,
-              padding: EdgeInsets.fromLTRB(6, 4, 6, 4),
-              margin: EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.fromLTRB(6, 4, 6, 4),
+              margin: const EdgeInsets.only(right: 5),
               child: Text(
                 e,
                 style: const TextStyle(

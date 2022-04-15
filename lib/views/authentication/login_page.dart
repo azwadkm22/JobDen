@@ -30,9 +30,9 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             PositionedLogo(),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             CustomTextField(controller: emailController, hintText: "Email"),
             CustomTextField(
                 controller: passwordController,
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
               },
               highlightedText: "Forgot Password?",
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             SubmitButton(
               text: "Login",
               onPressed: () {
@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
               highlightedText: "Register Now",
               unhighlightedText: "Don't have an account? ",
             ),
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
           ],
         ),
       ),

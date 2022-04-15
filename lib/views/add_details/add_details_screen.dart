@@ -36,7 +36,7 @@ class AddDetailsScreen extends StatelessWidget {
               color: ColorPalette.blue,
               height: 4.0,
             ),
-            preferredSize: Size.fromHeight(4.0)),
+            preferredSize: const Size.fromHeight(4.0)),
       )
     );
   }
@@ -48,23 +48,23 @@ class AddDetailsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomTextField(controller: fNameController, hintText: "First Name"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: lNameController, hintText: "Last Name"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: dobController, hintText: "Date of Birth"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: fieldController, hintText: "Field of Study"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: instController, hintText: "Institution"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: gradYearController, hintText: "Graduation Year"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: addressController, hintText: "Address"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomTextField(controller: phoneController, hintText: "Phone No"),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             SubmitButton(
               text: "Create Profile",
               onPressed: () {

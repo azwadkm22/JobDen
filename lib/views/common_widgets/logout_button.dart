@@ -13,7 +13,7 @@ class LogoutButton extends StatelessWidget {
             cancelTextColor: ColorPalette.blue,
             confirmTextColor: ColorPalette.textColor,
             buttonColor: ColorPalette.blue,
-            titleStyle: TextStyle(fontSize: 22),
+            titleStyle: const TextStyle(fontSize: 22),
             middleText: "Are you sure you want to log out?",
             textCancel: "No",
             textConfirm: "Yes",
@@ -23,7 +23,7 @@ class LogoutButton extends StatelessWidget {
               Navigator.of(context).pop();
             });
       },
-      icon: Icon(Icons.logout, color: ColorPalette.blue,),
+      icon: const Icon(Icons.logout, color: ColorPalette.blue,),
     );
   }
 }
