@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:job_den/commons/controller.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 
 import '../authentication/widgets/custom_text_field.dart';
+import '../home/home_screen.dart';
 
 
 class AddDetailsScreen extends StatelessWidget {
@@ -68,10 +72,9 @@ class AddDetailsScreen extends StatelessWidget {
             SubmitButton(
               text: "Create Profile",
               onPressed: () {
-                //Previous Code
-                // authController.createUser(
-                // emailController.text, passwordController.text);
-              },
+                userController.setUserInfo(authController.user?.uid, authController.user?.email , lNameController.text , fNameController.text, dobController.text, fieldController.text, instController.text, int.parse(gradYearController.text) , addressController.text, phoneController.text, []);
+                Get.to(() => HomeScreen());
+                },
             ),
 
           ],

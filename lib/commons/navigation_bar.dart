@@ -36,7 +36,7 @@ class AppNavigationBar extends BottomNavigationBar {
         );
       } else if (index == 4) {
         Get.offAll(() =>
-          AccountDetailsScreen(userAccount: UserAccount(email: "azwadkm22@gmail.com", lastName: "lastName", firstName: "firstName", dateOfBirth: DateTime(1,1,1), fieldOfStudy: "fieldOfStudy", institution: "institution", graduationYear: 1999, address: "address", phoneNumber: "phoneNumber", starredJobPost: []))
+          AccountDetailsScreen()
         );
       }
     },
