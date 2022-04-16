@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../common_widgets/color_palette.dart';
 
@@ -8,7 +9,8 @@ class CustomTextField extends Container {
     required hintText,
     smallMargin = false,
     bool isPassword = false,
-    String initialText = "",
+    bool onlyNumeric = false,
+    bool isPhoneNumber = false,
   }) :
         super(key: key,
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -19,7 +21,7 @@ class CustomTextField extends Container {
             ),
 
             child: TextField(
-
+              inputFormatters: isPhoneNumber ? [LengthLimitingTextInputFormatter(11),] : [],
               obscureText: isPassword,
               controller: controller,
               style: const TextStyle(

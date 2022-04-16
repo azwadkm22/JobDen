@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
 import 'package:job_den/views/authentication/widgets/positioned_logo.dart';
 import 'package:job_den/views/authentication/widgets/pressable_texts.dart';
@@ -69,12 +70,10 @@ class PasswordChangeRequestPage extends StatelessWidget {
 
             PressableText(
                 onPressed: () {
-                  // Get.back();
+                  Get.back();
                 },
                 unhighlightedText: "< ",
                 highlightedText: "Back to Login"),
-
-
             const SizedBox(height: 120),
           ],
         ),
