@@ -5,6 +5,7 @@ import 'package:job_den/models/user_account.dart';
 import 'package:job_den/views/account/EditButton.dart';
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
+import 'package:job_den/views/common_widgets/info_to_specific_field_switcher.dart';
 
 import '../../commons/navigation_bar.dart';
 import '../common_widgets/color_palette.dart';
@@ -13,7 +14,7 @@ import '../common_widgets/generic_button.dart';
 import 'info_to_field_switcher.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
-
+  late UserAccount currentUser;
   bool isEditable = false;
   final TextEditingController fNameController = TextEditingController();
   final TextEditingController lNameController = TextEditingController();
@@ -29,6 +30,7 @@ class AccountDetailsScreen extends StatefulWidget {
 }
 
 class _AccountDetailsState extends State<AccountDetailsScreen> {
+
   @override
   Widget build(BuildContext context) {
 
@@ -43,6 +45,9 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
   Widget _buildContent() {
     return Obx( () {
       if(userController.isLoading.value) return Center(child: CircularProgressIndicator(),);
+      else {
+        widget.currentUser = userController.user!;
+      }
       return SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -91,20 +96,26 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
                   controller: widget.instController,
                   label: "Institution",),
                 const SizedBox(height: 15,),
-                InfoToFieldSwitcher(info: userController.user?.graduationYear,
+                InfoToSpecificFieldSwitcher(info: userController.user?.graduationYear,
                   isEditable: widget.isEditable,
                   controller: widget.gradYearController,
-                  label: "Graduated",),
+                  label: "Graduated",
+                  keyboardType: TextInputType.number,
+                  maxLength: 4,
+                ),
                 const SizedBox(height: 15,),
                 InfoToFieldSwitcher(info: userController.user?.address,
                   isEditable: widget.isEditable,
                   controller: widget.addressController,
                   label: "Address",),
                 const SizedBox(height: 15,),
-                InfoToFieldSwitcher(info: userController.user?.phoneNumber,
+                InfoToSpecificFieldSwitcher(info: userController.user?.phoneNumber,
                   isEditable: widget.isEditable,
                   controller: widget.phoneController,
-                  label: "Phone No.",),
+                  label: "Phone No.",
+                  keyboardType: TextInputType.number,
+                  maxLength: 11,
+                ),
                 const SizedBox(height: 15,),
                 widget.isEditable ?
                 SubmitButton(onPressed: () async {
@@ -136,14 +147,14 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
                     :
                 EditButton(onPressed: () {
                   setState(() {
-                    widget.lNameController.text = widget.lNameController.text;
-                    widget.fNameController.text = widget.fNameController.text;
-                    widget.dobController.text = widget.dobController.text;
-                    widget.fieldController.text = widget.fieldController.text;
-                    widget.instController.text = widget.instController.text;
-                    widget.gradYearController.text = widget.gradYearController.text;
-                    widget.addressController.text = widget.addressController.text;
-                    widget.phoneController.text = widget.phoneController.text;
+                    widget.lNameController.text = widget.currentUser.lastName;
+                    widget.fNameController.text = widget.currentUser.firstName;
+                    widget.dobController.text = widget.currentUser.dateOfBirth;
+                    widget.fieldController.text = widget.currentUser.fieldOfStudy;
+                    widget.instController.text = widget.currentUser.institution;
+                    widget.gradYearController.text = widget.currentUser.graduationYear.toString();
+                    widget.addressController.text = widget.currentUser.address;
+                    widget.phoneController.text = widget.currentUser.phoneNumber;
                     // Do Stuff
                     widget.isEditable = true;
                   });

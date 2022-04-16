@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:job_den/views/authentication/widgets/positioned_logo.dart';
 import 'package:job_den/views/authentication/widgets/pressable_texts.dart';
@@ -50,7 +51,7 @@ class SignUpPage extends StatelessWidget {
 
             PressableText(
                 onPressed: () {
-                  // Get.back();
+                  Get.back();
                 },
                 unhighlightedText: "Already have an account? ",
                 highlightedText: "Sign in."

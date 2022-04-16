@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:job_den/commons/controller.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
+import 'package:job_den/views/common_widgets/specific_type_field.dart';
 
 import '../authentication/widgets/custom_text_field.dart';
 import '../home/home_screen.dart';
@@ -63,11 +64,11 @@ class AddDetailsScreen extends StatelessWidget {
             const SizedBox(height: 5),
             CustomTextField(controller: instController, hintText: "Institution"),
             const SizedBox(height: 5),
-            CustomTextField(controller: gradYearController, hintText: "Graduation Year"),
+            SpecificTypeField(controller: gradYearController, hintText: "Graduation Year", keyboardType: TextInputType.number, maxLength: 4,),
             const SizedBox(height: 5),
             CustomTextField(controller: addressController, hintText: "Address"),
             const SizedBox(height: 5),
-            CustomTextField(controller: phoneController, hintText: "Phone No"),
+            SpecificTypeField(controller: phoneController, hintText: "Phone No", keyboardType: TextInputType.number, maxLength: 11,),
             const SizedBox(height: 10),
             SubmitButton(
               text: "Create Profile",
