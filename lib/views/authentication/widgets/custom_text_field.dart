@@ -8,6 +8,7 @@ class CustomTextField extends Container {
     required hintText,
     smallMargin = false,
     bool isPassword = false,
+    String initialText = "",
   }) :
         super(key: key,
             padding: const EdgeInsets.only(left: 10, right: 10),

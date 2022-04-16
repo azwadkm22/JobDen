@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 
+import '../../commons/controller.dart';
+
 class LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class LogoutButton extends StatelessWidget {
             textConfirm: "Yes",
             onCancel: () {},
             onConfirm: () {
-              // authController.signOut();
+              authController.signOut();
               Navigator.of(context).pop();
             });
       },

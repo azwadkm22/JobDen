@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:job_den/views/placeholder_screen.dart';
 
 class AuthController extends GetxController{
   FirebaseAuth _auth = FirebaseAuth.instance;
-  Rxn<User> _firebaseUser = Rxn<User>();
+  final Rxn<User> _firebaseUser = Rxn<User>();
 
   User? get user => _firebaseUser.value;
+  var isNewUser = false.obs;
 
   @override
   void onInit() {
@@ -17,6 +19,7 @@ class AuthController extends GetxController{
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      isNewUser(true);
       Get.back();
     } catch (err) {
       Get.snackbar(
@@ -30,6 +33,7 @@ class AuthController extends GetxController{
   void login(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      isNewUser(false);
     } catch (err) {
       Get.snackbar(
         "Error logging in",
@@ -42,6 +46,7 @@ class AuthController extends GetxController{
   void signOut() async {
     try {
       await _auth.signOut();
+      Get.to(() => const PlaceHolderScreen());
     } catch (err) {
       Get.snackbar(
         "Error signing out",

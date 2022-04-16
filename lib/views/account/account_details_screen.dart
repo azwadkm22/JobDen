@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_den/commons/controller.dart';
 import 'package:job_den/models/user_account.dart';
 import 'package:job_den/views/account/EditButton.dart';
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
@@ -11,7 +13,7 @@ import '../common_widgets/generic_button.dart';
 import 'info_to_field_switcher.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
-  UserAccount userAccount;
+
   bool isEditable = false;
   final TextEditingController fNameController = TextEditingController();
   final TextEditingController lNameController = TextEditingController();
@@ -22,7 +24,6 @@ class AccountDetailsScreen extends StatefulWidget {
   final TextEditingController gradYearController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  AccountDetailsScreen({Key? key, required this.userAccount}) : super(key: key);
   @override
   _AccountDetailsState createState() => _AccountDetailsState();
 }
@@ -30,6 +31,8 @@ class AccountDetailsScreen extends StatefulWidget {
 class _AccountDetailsState extends State<AccountDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+
+    userController.getUserAccount(authController.user?.uid);
     return Scaffold(
         backgroundColor: ColorPalette.backgroundColor,
         body: _buildContent(),
@@ -38,58 +41,112 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
     );
   }
   Widget _buildContent() {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
-          controller: new ScrollController(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  const Expanded(flex: 4, child: Text("Email: ", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: ColorPalette.blue),)),
-                  Expanded(flex: 8, child: Text(widget.userAccount.email, style: const TextStyle(fontSize: 18, color: ColorPalette.black),)),
-                ],
-              ),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.firstName,isEditable: widget.isEditable, controller: widget.fNameController, label: "First Name",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.lastName,isEditable: widget.isEditable, controller: widget.lNameController, label: "Last Name",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.dateOfBirth,isEditable: widget.isEditable, controller: widget.dobController, label: "Date of Birth",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.fieldOfStudy,isEditable: widget.isEditable, controller: widget.fieldController, label: "Field of Study",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.institution,isEditable: widget.isEditable, controller: widget.instController, label: "Institution",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.graduationYear,isEditable: widget.isEditable, controller: widget.gradYearController, label: "Graduated",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.address,isEditable: widget.isEditable, controller: widget.addressController, label: "Address",),
-              const SizedBox(height: 15,),
-              InfoToFieldSwitcher(info: widget.userAccount.phoneNumber,isEditable: widget.isEditable, controller: widget.phoneController, label: "Phone No.",),
-              const SizedBox(height: 15,),
-              widget.isEditable ?
-              SubmitButton(onPressed: (){
-                setState(() {
-                  // Do Stuff
-                  widget.isEditable = false;
-                });
-              }, text: "Save Edit")
-                  :
-              EditButton(onPressed: () {
-                setState(() {
-                  // Do Stuff
-                  widget.isEditable = true;
-                });
-              })
+    return Obx( () {
+      if(userController.isLoading.value) return Center(child: CircularProgressIndicator(),);
+      return SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: SingleChildScrollView(
+            controller: new ScrollController(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const SizedBox(height: 20),
+                // Row(
+                //   children: [
+                //     const Expanded(flex: 4,
+                //         child: Text("Email: ",
+                //           style: TextStyle(fontSize: 18, fontWeight: FontWeight
+                //               .w600, color: ColorPalette.blue),)),
+                //     Expanded(flex: 8,
+                //         child: Text(authController.user?.email,
+                //           style: const TextStyle(
+                //               fontSize: 18, color: ColorPalette.black),)),
+                //   ],
+                // ),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.firstName,
+                  isEditable: widget.isEditable,
+                  controller: widget.fNameController,
+                  label: "First Name",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.lastName,
+                  isEditable: widget.isEditable,
+                  controller: widget.lNameController,
+                  label: "Last Name",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.dateOfBirth,
+                  isEditable: widget.isEditable,
+                  controller: widget.dobController,
+                  label: "Date of Birth",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.fieldOfStudy,
+                  isEditable: widget.isEditable,
+                  controller: widget.fieldController,
+                  label: "Field of Study",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.institution,
+                  isEditable: widget.isEditable,
+                  controller: widget.instController,
+                  label: "Institution",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.graduationYear,
+                  isEditable: widget.isEditable,
+                  controller: widget.gradYearController,
+                  label: "Graduated",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.address,
+                  isEditable: widget.isEditable,
+                  controller: widget.addressController,
+                  label: "Address",),
+                const SizedBox(height: 15,),
+                InfoToFieldSwitcher(info: userController.user?.phoneNumber,
+                  isEditable: widget.isEditable,
+                  controller: widget.phoneController,
+                  label: "Phone No.",),
+                const SizedBox(height: 15,),
+                widget.isEditable ?
+                SubmitButton(onPressed: () async {
+                  print(widget.lNameController.text);
+                  await userController.setUserInfo(
+                      authController.user?.uid,
+                      authController.user?.email,
+                      widget.lNameController.text,
+                      widget.fNameController.text,
+                      widget.dobController.text,
+                      widget.fieldController.text,
+                      widget.instController.text,
+                      int.parse(widget.gradYearController.text),
+                      widget.addressController.text,
+                      widget.phoneController.text,
+                      []);
+                  setState(() {
+                    widget.lNameController.text = widget.lNameController.text;
+                    widget.fNameController.text = widget.fNameController.text;
+                    widget.dobController.text = widget.dobController.text;
+                    widget.fieldController.text = widget.fieldController.text;
+                    widget.instController.text = widget.instController.text;
+                    widget.gradYearController.text = widget.gradYearController.text;
+                    widget.addressController.text = widget.addressController.text;
+                    widget.phoneController.text = widget.phoneController.text;
+                    widget.isEditable = false;
+                  });
+                }, text: "Save Edit")
+                    :
+                EditButton(onPressed: () {
+                  setState(() {
+                    // Do Stuff
+                    widget.isEditable = true;
+                  });
+                })
 
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+      );
+    }
     );
   }
 }

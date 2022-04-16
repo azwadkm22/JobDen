@@ -1,16 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'job_post.dart';
 
 class UserAccount {
   String email;
   String lastName;
   String firstName;
-  DateTime dateOfBirth;
+  String dateOfBirth;
   String fieldOfStudy;
   String institution;
   int graduationYear;
   String address;
   String phoneNumber;
-  List<JobPost> starredJobPost;
+  List<dynamic> starredJobPostId;
 
   UserAccount({
     required this.email,
@@ -22,6 +25,9 @@ class UserAccount {
     required this.graduationYear,
     required this.address,
     required this.phoneNumber,
-    required this.starredJobPost,
+    required this.starredJobPostId,
 });
+  
+  factory UserAccount.fromDocumentSnapshot(DocumentSnapshot doc) =>
+      UserAccount(email: doc['email'], lastName: doc['lastName'], firstName: doc["firstName"], dateOfBirth: doc["dateOfBirth"], fieldOfStudy: doc["fieldOfStudy"], institution: doc["institution"], graduationYear: doc["graduationYear"], address: doc["address"], phoneNumber: doc["phoneNumber"], starredJobPostId: doc["starredJobPostId"]);
 }
