@@ -136,6 +136,14 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
                     :
                 EditButton(onPressed: () {
                   setState(() {
+                    widget.lNameController.text = widget.lNameController.text;
+                    widget.fNameController.text = widget.fNameController.text;
+                    widget.dobController.text = widget.dobController.text;
+                    widget.fieldController.text = widget.fieldController.text;
+                    widget.instController.text = widget.instController.text;
+                    widget.gradYearController.text = widget.gradYearController.text;
+                    widget.addressController.text = widget.addressController.text;
+                    widget.phoneController.text = widget.phoneController.text;
                     // Do Stuff
                     widget.isEditable = true;
                   });
