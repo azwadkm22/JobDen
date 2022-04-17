@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_den/controllers/job_post_controller.dart';
+import 'package:job_den/controllers/starred_controller.dart';
 import 'package:job_den/controllers/user_controller.dart';
 import 'package:job_den/views/placeholder_screen.dart';
 
@@ -15,6 +16,7 @@ void main() async {
   Get.put(JobPostController());
   Get.put(SearchController());
   Get.put(UserController());
+  Get.put(StarredController());
   runApp(const MyApp());
 }
 

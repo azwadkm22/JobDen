@@ -14,6 +14,7 @@ class PlaceHolderScreen extends StatelessWidget {
     return Obx(() {
       if ((authController.user != null)) {
         jobPostController.getJobPosts();
+        userController.getUserAccount(authController.user?.uid);
         if(authController.isNewUser.value) {
           return AddDetailsScreen();
         } else {

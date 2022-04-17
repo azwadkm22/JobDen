@@ -4,6 +4,8 @@ import 'package:job_den/commons/controller.dart';
 import 'package:job_den/models/user_account.dart';
 import 'package:job_den/views/home/home_screen.dart';
 
+import '../models/job_post.dart';
+
 class UserController {
   final CollectionReference<Map<String, dynamic>> userCollection =
   FirebaseFirestore.instance.collection('users');
@@ -11,6 +13,7 @@ class UserController {
   var isLoading = false.obs;
   var hasInfo = false.obs;
   UserAccount? user;
+
 
   Future<void> getUserAccount(String? uid) async {
     isLoading(true);
@@ -62,6 +65,41 @@ class UserController {
     }
   }
 
+  Future<void> addToStarred(String? uid, String jobId) async {
+    List<dynamic> idList = [];
+    await getUserAccount(uid);
+    idList.addAll(user!.starredJobPostId);
+    idList.add(jobId);
+
+    try{
+      await userCollection.doc(uid).update({
+        "starredJobPostId": idList
+      });
+      await getUserAccount(uid);
+      await starredController.getStarredList(uid);
+    // ignore: empty_catches
+    }catch(e) {
+
+    }
+  }
+
+  Future<void> removeFromStarred(String? uid, String jobId) async {
+    List<dynamic> idList = [];
+    await getUserAccount(uid);
+    idList.addAll(user!.starredJobPostId);
+    idList.remove(jobId);
+
+    try{
+      await userCollection.doc(uid).update({
+        "starredJobPostId": idList
+      });
+      await getUserAccount(uid);
+      await starredController.getStarredList(uid);
+      // ignore: empty_catches
+    }catch(e) {
+
+    }
+  }
 
 
   void updateUserInfo(){}

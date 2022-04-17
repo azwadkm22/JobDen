@@ -1,11 +1,37 @@
+import 'package:get/get.dart';
+import 'package:job_den/commons/controller.dart';
 import 'package:job_den/models/job_post.dart';
 
-class StarredController {
-  // bool isLoading;
-  // List<JobPost> starredJobList;
+class StarredController extends GetxController{
+  var isLoading = false.obs;
+  var starredJobList = <JobPost>[].obs;
 
-  void addToStarred(){}
+  void addToStarred(){
+
+  }
   void removeFromStarred(){}
-  void getStarredList(){}
+
+  Future<void> getStarredList(String? uid) async{
+    starredJobList.clear();
+    isLoading(true);
+    List<dynamic> idList = [];
+    await userController.getUserAccount(uid);
+    idList.addAll(userController.user!.starredJobPostId);
+    for(var id in idList) {
+      for(var job in jobPostController.jobPostList) {
+        if(id.toString().compareTo(job.jobPostID.toString()) == 0) {
+          starredJobList.add(job);
+        }
+      }
+    }
+    isLoading(false);
+  }
+
+  bool checkIfStarred(String? uid, JobPost job) {
+    List<dynamic> idList = [];
+    userController.getUserAccount(uid);
+    idList.addAll(userController.user!.starredJobPostId);
+    return idList.contains(job.jobPostID);
+  }
   void clearStarredList(){}
 }

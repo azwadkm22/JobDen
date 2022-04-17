@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:job_den/commons/controller.dart';
 import 'package:job_den/models/job_post.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
@@ -17,8 +18,18 @@ class JobCard extends StatefulWidget {
 
 class _JobCardState extends State<JobCard> {
   bool isStarred = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isStarred = starredController.checkIfStarred(authController.user?.uid, widget.jobPost);
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: () {
         Get.to(() => JobDetailsScreen(jobPost: widget.jobPost,));
@@ -48,12 +59,12 @@ class _JobCardState extends State<JobCard> {
                   if (isStarred == false )
                     {
                     isStarred = true;
-                    //Add to starred
+                    userController.addToStarred(authController.user?.uid, widget.jobPost.jobPostID);
                     }
                   else if (isStarred = true)
                     {
                       isStarred = false;
-                      //remove from starred
+                      userController.removeFromStarred(authController.user?.uid, widget.jobPost.jobPostID);
                     }
                 });}, child: isStarred == true ? const Icon(Icons.star, color: Colors.blueAccent,) : const Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
               ],
