@@ -22,19 +22,18 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  final List<JobPost> jobPostList = jobPostController.jobPostList;
 
   Widget _buildContent() {
     return SafeArea(
       child: Obx( () {
         return ListView.builder(
           shrinkWrap: true,
-            itemCount: jobPostList.length,
+            itemCount: jobPostController.jobPostList.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: JobCard(
-                  jobPost: jobPostList[index],),
+                  jobPost: jobPostController.jobPostList[index],),
               );
                 // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
               // );

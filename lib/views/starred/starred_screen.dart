@@ -13,6 +13,7 @@ class StarredScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    starredController.getStarredList(authController.user?.uid);
     return Scaffold(
       backgroundColor: ColorPalette.backgroundColor,
       body: _buildContent(),
@@ -21,19 +22,20 @@ class StarredScreen extends StatelessWidget {
     );
   }
 
-  final List<JobPost> jobPostList = jobPostController.jobPostList;
 
   Widget _buildContent() {
     return SafeArea(
       child: Obx( () {
+        if(starredController.isLoading.value) return Center(child: const CircularProgressIndicator(),);
+        if(userController.isLoading.value) return Center(child: const CircularProgressIndicator(),);
         return ListView.builder(
           shrinkWrap: true,
-          itemCount: jobPostList.length,
+          itemCount: starredController.starredJobList.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(10.0),
               child: JobCard(
-                jobPost: jobPostList[index],),
+                jobPost: starredController.starredJobList[index],),
             );
             // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
             // );
