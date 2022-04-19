@@ -43,11 +43,6 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
     );
   }
   Widget _buildContent() {
-    return Obx( () {
-      if(userController.isLoading.value) return Center(child: CircularProgressIndicator(),);
-      else {
-        widget.currentUser = userController.user!.value;
-      }
       return SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -165,7 +160,6 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
           ),
         ),
       );
-    }
-    );
+
   }
 }

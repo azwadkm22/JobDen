@@ -25,7 +25,6 @@ class StarredScreen extends StatelessWidget {
     return SafeArea(
       child: Obx( () {
         if(starredController.isLoading.value) return Center(child: const CircularProgressIndicator(),);
-        if(userController.isLoading.value) return Center(child: const CircularProgressIndicator(),);
         return ListView.builder(
           shrinkWrap: true,
           itemCount: starredController.starredJobList.length,

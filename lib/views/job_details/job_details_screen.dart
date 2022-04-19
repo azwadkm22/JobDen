@@ -138,7 +138,7 @@ class JobDetailsScreen extends StatelessWidget {
                   child: authController.user?.uid == jobPost.posterID ?
                   GenericButton(label: 'Delete', color: ColorPalette.red,padding: 40, onPressed: ()
                     {
-                      //Delete JobPost
+                      jobPostController.deleteJobPost(jobPost.jobPostID);
                     },) :
                   GenericButton(label: 'Apply',
                       onPressed: () async {

@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:job_den/commons/controller.dart';
 import 'package:job_den/models/job_post.dart';
 import 'package:job_den/views/home/home_screen.dart';
+import 'package:job_den/views/placeholder_screen.dart';
 
 class JobPostController extends GetxController{
   final CollectionReference<Map<String, dynamic>> jobCollection =
@@ -68,7 +70,18 @@ class JobPostController extends GetxController{
     }
   }
 
-  void applyJobPost(){}
+  Future<void> deleteJobPost(String? uid) async {
+    try {
+      var snapshot = await jobCollection
+          .doc(uid)
+          .get();
+      await snapshot.reference.delete();
+    } catch (e) {
+      Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.BOTTOM);
+    }
+    finally{
+      Get.back();
+    }
+  }
   void setActiveJob(){}
-  void deleteJobPost(){}
 }
