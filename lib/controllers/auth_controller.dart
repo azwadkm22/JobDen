@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:job_den/commons/controller.dart';
+import 'package:job_den/views/add_details/add_details_screen.dart';
 import 'package:job_den/views/placeholder_screen.dart';
 
 class AuthController extends GetxController{
@@ -7,7 +9,6 @@ class AuthController extends GetxController{
   final Rxn<User> _firebaseUser = Rxn<User>();
 
   User? get user => _firebaseUser.value;
-  var isNewUser = false.obs;
 
   @override
   void onInit() {
@@ -19,8 +20,8 @@ class AuthController extends GetxController{
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      isNewUser(true);
-      Get.back();
+      await userController.setUserInfo(user?.uid, user?.email, "", "", "", "", "", 0, "", "", []);
+      Get.to(() => AddDetailsScreen());
     } catch (err) {
       Get.snackbar(
         "Error creating account",
@@ -33,7 +34,6 @@ class AuthController extends GetxController{
   void login(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      isNewUser(false);
     } catch (err) {
       Get.snackbar(
         "Error logging in",

@@ -5,6 +5,7 @@ import 'package:job_den/commons/controller.dart';
 import 'package:job_den/views/authentication/widgets/submit_button.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/specific_type_field.dart';
+import 'package:job_den/views/placeholder_screen.dart';
 
 import '../authentication/widgets/custom_text_field.dart';
 import '../home/home_screen.dart';
@@ -74,7 +75,7 @@ class AddDetailsScreen extends StatelessWidget {
               text: "Create Profile",
               onPressed: () {
                 userController.setUserInfo(authController.user?.uid, authController.user?.email , lNameController.text , fNameController.text, dobController.text, fieldController.text, instController.text, int.parse(gradYearController.text) , addressController.text, phoneController.text, []);
-                Get.to(() => HomeScreen());
+                Get.to(() => const PlaceHolderScreen());
                 },
             ),
 

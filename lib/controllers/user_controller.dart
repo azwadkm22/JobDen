@@ -12,16 +12,14 @@ class UserController {
 
   var isLoading = false.obs;
   var hasInfo = false.obs;
-  UserAccount? user;
+  var userList = <UserAccount>[].obs;
+  Rx<UserAccount>? user;
 
 
   Future<void> getUserAccount(String? uid) async {
     isLoading(true);
     try {
-      var docSnap = await userCollection.doc(uid).get();
-      if(docSnap.exists) {
-        user = UserAccount.fromDocumentSnapshot(docSnap);
-      }
+      userList.bindStream(listStream(uid));
     } catch (e) {
       print(e);
     }
@@ -30,6 +28,21 @@ class UserController {
       isLoading(false);
     }
   }
+
+  Stream<List<UserAccount>> listStream(String? uid) {
+    return userCollection
+        .snapshots()
+        .map((QuerySnapshot query) {
+      List<UserAccount> retVal = [];
+      query.docs.forEach((element) {
+        if(element.reference.id == uid) user = UserAccount.fromDocumentSnapshot(element).obs;
+        retVal.add(UserAccount.fromDocumentSnapshot(element));
+      });
+      return retVal;
+    });
+  }
+
+
 
   Future<void> setUserInfo(
       String? uid,
@@ -66,9 +79,10 @@ class UserController {
   }
 
   Future<void> addToStarred(String? uid, String jobId) async {
+    isLoading(true);
     List<dynamic> idList = [];
     await getUserAccount(uid);
-    idList.addAll(user!.starredJobPostId);
+    idList.addAll(user!.value.starredJobPostId);
     idList.add(jobId);
 
     try{
@@ -81,12 +95,16 @@ class UserController {
     }catch(e) {
 
     }
+    finally{
+      isLoading(false);
+    }
   }
 
   Future<void> removeFromStarred(String? uid, String jobId) async {
+    isLoading(true);
     List<dynamic> idList = [];
     await getUserAccount(uid);
-    idList.addAll(user!.starredJobPostId);
+    idList.addAll(user!.value.starredJobPostId);
     idList.remove(jobId);
 
     try{
@@ -98,6 +116,9 @@ class UserController {
       // ignore: empty_catches
     }catch(e) {
 
+    }
+    finally{
+      isLoading(false);
     }
   }
 
