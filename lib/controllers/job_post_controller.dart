@@ -68,7 +68,16 @@ class JobPostController extends GetxController{
     }
   }
 
-  void applyJobPost(){}
+  Future<void> applyJobPost(String? uid) async {
+    try {
+      var snapshot = await jobCollection
+          .doc(uid)
+          .get();
+      await snapshot.reference.delete();
+    } catch (e) {
+      Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.BOTTOM);
+    }
+  }
   void setActiveJob(){}
   void deleteJobPost(){}
 }

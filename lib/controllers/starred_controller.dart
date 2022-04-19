@@ -15,7 +15,6 @@ class StarredController extends GetxController{
     starredJobList.clear();
     isLoading(true);
     List<dynamic> idList = [];
-    await userController.getUserAccount(uid);
     idList.addAll(userController.user!.value.starredJobPostId);
     for(var id in idList) {
       for(var job in jobPostController.jobPostList) {
