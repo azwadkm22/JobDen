@@ -58,19 +58,19 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 const SizedBox(height: 20),
-                // Row(
-                //   children: [
-                //     const Expanded(flex: 4,
-                //         child: Text("Email: ",
-                //           style: TextStyle(fontSize: 18, fontWeight: FontWeight
-                //               .w600, color: ColorPalette.blue),)),
-                //     Expanded(flex: 8,
-                //         child: Text(authController.user?.email,
-                //           style: const TextStyle(
-                //               fontSize: 18, color: ColorPalette.black),)),
-                //   ],
-                // ),
-                const SizedBox(height: 15,),
+                Row(
+                  children: [
+                    const Expanded(flex: 4,
+                        child: Text("Email: ",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight
+                              .w600, color: ColorPalette.blue),)),
+                    Expanded(flex: 8,
+                        child: Text(userController.user!.value.email,
+                          style: const TextStyle(
+                              fontSize: 18, color: ColorPalette.black),)),
+                  ],
+                ),
+                const SizedBox(height: 25,),
                 InfoToFieldSwitcher(info: userController.user!.value.firstName,
                   isEditable: widget.isEditable,
                   controller: widget.fNameController,

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/custom_app_bar.dart';
@@ -27,9 +28,10 @@ class JobDetailsScreen extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    var isStarred = starredController.checkIfStarred(authController.user?.uid, jobPost).obs;
     return SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.only(left: 15.0, right:15.0),
           child: SingleChildScrollView(
             controller: ScrollController(),
             child: Column(
@@ -37,7 +39,31 @@ class JobDetailsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 const SizedBox(height: 10,),
-                Text(jobPost.jobTitle, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),),
+                Row(
+                  children: [
+                    Expanded(flex: 12,child: Text(jobPost.jobTitle, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),)),
+                    Expanded(flex: 1, child: Container(),),
+                    Expanded(
+                      flex: 1,
+                      child: GestureDetector(child:
+                       Obx ( () => Icon( starredController.checkIfStarred(authController.user?.uid, jobPost).obs == true ? Icons.star : Icons.star_border_outlined, color: ColorPalette.blue,size: 32,),),
+                        onTap: ()
+                        {
+                        if (starredController.checkIfStarred(authController.user?.uid, jobPost).obs == false )
+                        {
+                        isStarred = true.obs;
+                        userController.addToStarred(authController.user?.uid, jobPost.jobPostID);
+                        }
+                        else
+                        {
+                        isStarred = false.obs;
+                        userController.removeFromStarred(authController.user?.uid, jobPost.jobPostID);
+                        }
+                        //is User is bound to change.
+                        }),
+                    )
+                  ],
+                ),
                 const SizedBox(height: 20,),
                 const Text("Job Description:", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: ColorPalette.blue),),
                 const SizedBox(height: 10,),

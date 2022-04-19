@@ -24,7 +24,7 @@ class AppNavigationBar extends BottomNavigationBar {
         HomeScreen());
       } else if (index == 1) {
         Get.offAll(() =>
-          const AddJobPostScreen()
+          AddJobPostScreen()
         );
       } else if (index == 2) {
         Get.offAll(() =>

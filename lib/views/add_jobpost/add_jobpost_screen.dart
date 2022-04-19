@@ -14,13 +14,6 @@ class AddJobPostScreen extends StatefulWidget {
 
   @override
   _AddJobPostState createState() => _AddJobPostState();
-
-
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
 }
 
 class _AddJobPostState extends State<AddJobPostScreen> {
