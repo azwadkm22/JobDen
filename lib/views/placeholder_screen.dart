@@ -15,11 +15,8 @@ class PlaceHolderScreen extends StatelessWidget {
       if ((authController.user != null)) {
         jobPostController.getJobPosts();
         userController.getUserAccount(authController.user?.uid);
-        if(authController.isNewUser.value) {
-          return AddDetailsScreen();
-        } else {
-          return HomeScreen();
-        }
+        return HomeScreen();
+
       } else {
         return LoginPage();
       }
