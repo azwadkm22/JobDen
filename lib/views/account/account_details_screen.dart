@@ -14,7 +14,6 @@ import '../common_widgets/generic_button.dart';
 import 'info_to_field_switcher.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
-  late UserAccount currentUser;
   bool isEditable = false;
   final TextEditingController fNameController = TextEditingController();
   final TextEditingController lNameController = TextEditingController();
@@ -142,14 +141,14 @@ class _AccountDetailsState extends State<AccountDetailsScreen> {
                     :
                 EditButton(onPressed: () {
                   setState(() {
-                    widget.lNameController.text = widget.currentUser.lastName;
-                    widget.fNameController.text = widget.currentUser.firstName;
-                    widget.dobController.text = widget.currentUser.dateOfBirth;
-                    widget.fieldController.text = widget.currentUser.fieldOfStudy;
-                    widget.instController.text = widget.currentUser.institution;
-                    widget.gradYearController.text = widget.currentUser.graduationYear.toString();
-                    widget.addressController.text = widget.currentUser.address;
-                    widget.phoneController.text = widget.currentUser.phoneNumber;
+                    widget.lNameController.text = userController.user!.value.lastName;
+                    widget.fNameController.text = userController.user!.value.firstName;
+                    widget.dobController.text = userController.user!.value.dateOfBirth;
+                    widget.fieldController.text = userController.user!.value.fieldOfStudy;
+                    widget.instController.text = userController.user!.value.institution;
+                    widget.gradYearController.text = userController.user!.value.graduationYear.toString();
+                    widget.addressController.text = userController.user!.value.address;
+                    widget.phoneController.text = userController.user!.value.phoneNumber;
                     // Do Stuff
                     widget.isEditable = true;
                   });

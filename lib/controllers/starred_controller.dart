@@ -6,11 +6,6 @@ class StarredController extends GetxController{
   var isLoading = false.obs;
   var starredJobList = <JobPost>[].obs;
 
-  void addToStarred(){
-
-  }
-  void removeFromStarred(){}
-
   Future<void> getStarredList(String? uid) async{
     starredJobList.clear();
     isLoading(true);
@@ -32,5 +27,4 @@ class StarredController extends GetxController{
     idList.addAll(userController.user!.value.starredJobPostId);
     return idList.contains(job.jobPostID);
   }
-  void clearStarredList(){}
 }

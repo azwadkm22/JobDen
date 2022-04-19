@@ -34,8 +34,6 @@ class StarredScreen extends StatelessWidget {
               child: JobCard(
                 jobPost: starredController.starredJobList[index],),
             );
-            // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
-            // );
           },);
       }
       ),

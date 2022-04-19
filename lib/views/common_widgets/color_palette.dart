@@ -12,5 +12,4 @@ class ColorPalette {
   static const Color red = Color(0xffef5350);
 
   static const Color gold = Color(0xffffd000);
-  // #FFD700
 }

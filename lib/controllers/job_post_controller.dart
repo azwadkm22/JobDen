@@ -83,5 +83,4 @@ class JobPostController extends GetxController{
       Get.back();
     }
   }
-  void setActiveJob(){}
 }

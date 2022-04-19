@@ -31,5 +31,4 @@ class SearchController extends GetxController{
     }
     Get.to(() => SearchResultScreen());
   }
-  void filterJobs(){}
 }

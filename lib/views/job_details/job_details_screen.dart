@@ -59,7 +59,6 @@ class JobDetailsScreen extends StatelessWidget {
                         isStarred = false.obs;
                         userController.removeFromStarred(authController.user?.uid, jobPost.jobPostID);
                         }
-                        //is User is bound to change.
                         }),
                     )
                   ],
@@ -130,7 +129,6 @@ class JobDetailsScreen extends StatelessWidget {
                   children: [
                     const Expanded(flex: 2, child: Text("Posted On: ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: ColorPalette.blue),)),
                     Expanded(flex: 5, child: Text(jobPost.postingDate.toString(), style: const TextStyle(fontSize: 20, color: ColorPalette.black),),),
-                    // Use getUserEmailbyID in the above code ^
                   ],
                 ),
 

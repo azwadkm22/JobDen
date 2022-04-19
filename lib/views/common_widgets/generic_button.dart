@@ -20,7 +20,6 @@ class GenericButton extends SizedBox {
                   fit: BoxFit.fill,
                   child: Text(label,
                     style: TextStyle(color: textColor, fontSize: fontSize, fontWeight: FontWeight.w500,
-                      // fontFamily: FontResource.secondaryFont
                     ),
                     textAlign: TextAlign.center,
                   ),

@@ -42,7 +42,6 @@ class PasswordChangeRequestPage extends StatelessWidget {
               ),
             ),
 
-            // SizedBox(height: 30),
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.fromLTRB(30, 10, 30, 10),

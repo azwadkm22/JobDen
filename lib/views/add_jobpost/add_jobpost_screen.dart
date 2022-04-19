@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:job_den/commons/controller.dart';
 import 'package:job_den/commons/navigation_bar.dart';
 import 'package:job_den/views/authentication/widgets/custom_text_field.dart';
-import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/custom_app_bar.dart';
-
 import '../../commons/bold_text.dart';
 import '../authentication/widgets/submit_button.dart';
 import '../common_widgets/ExtendableTextField.dart';

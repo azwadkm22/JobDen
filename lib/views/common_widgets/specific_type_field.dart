@@ -13,7 +13,7 @@ class SpecificTypeField extends Container {
   }) :
         super(key: key,
         padding: const EdgeInsets.only(left: 10, right: 10),
-        margin: smallMargin ? const EdgeInsets.all(0) : const EdgeInsets.fromLTRB(30, 0, 30, 10),
+        margin: smallMargin ? const EdgeInsets.all(0) : const EdgeInsets.fromLTRB(20, 0, 20, 10),
         decoration: BoxDecoration(
           color: const Color(0xffcdcdcd),
           borderRadius: BorderRadius.circular(5),

@@ -44,8 +44,18 @@ class SignUpPage extends StatelessWidget {
             SubmitButton(
               text: "Register",
               onPressed: () {
-                authController.createUser(
-                  emailController.text, passwordController.text);
+                if (passwordController.text == confirmPasswordController.text)
+                  {
+                    authController.createUser(
+                        emailController.text.trim(), passwordController.text);
+                  }
+                else {
+                  Get.snackbar(
+                    "Error creating account",
+                    "Password and Confirm Password doesn't match.",
+                    snackPosition: SnackPosition.BOTTOM,
+                  );
+                }
               },
             ),
 

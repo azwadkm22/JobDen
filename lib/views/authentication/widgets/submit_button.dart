@@ -14,7 +14,6 @@ class SubmitButton extends Container {
             child: Text(
             text,
             style: const TextStyle(fontSize: 25, fontWeight: FontWeight.normal,
-                // fontFamily: FontResource.secondaryFont
             ),
             ),
             style: ElevatedButton.styleFrom(

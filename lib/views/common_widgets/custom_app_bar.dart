@@ -12,19 +12,11 @@ class CustomAppBar extends AppBar {
   centerTitle: true,
 
   title: logoInstead ?
-  // Row(
-  //   mainAxisAlignment: MainAxisAlignment.center,
-  //   children: [
-  //     Expanded(flex:4, child: Container()),
       SizedBox(height: 120, child: Image.asset("assets/icon.png"))
-  //     Expanded(flex:4, child: Container()),
-  //   ],
-  // )
       :
   Text(label,
   textAlign: TextAlign.center,
   style: const TextStyle(color: ColorPalette.blue,
-// fontFamily: FontResource.secondaryFont
   ),
   ),
 

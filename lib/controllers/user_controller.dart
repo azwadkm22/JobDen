@@ -122,9 +122,4 @@ class UserController {
     }
   }
 
-
-  void updateUserInfo(){}
-
-  void enableEdit(){}
-  void disableEdit(){}
 }

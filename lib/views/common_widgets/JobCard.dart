@@ -20,7 +20,6 @@ class JobCard extends StatelessWidget {
       },
   child: Container(
     padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 2),
-    // margin: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
 
     decoration: const BoxDecoration(
       color: Color(0xFFC4C4C4),
@@ -38,18 +37,6 @@ class JobCard extends StatelessWidget {
               children: [
                 Expanded(flex: 18, child: Text(jobPost.jobTitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: ColorPalette.blue),)),
                 Expanded(flex: 1, child: Container()),
-                // Expanded(flex: 2, child: GestureDetector(onTap: (){ setState(() {
-                //   if (isStarred == false )
-                //     {
-                //     isStarred = true;
-                //     userController.addToStarred(authController.user?.uid, widget.jobPost.jobPostID);
-                //     }
-                //   else if (isStarred = true)
-                //     {
-                //       isStarred = false;
-                //       userController.removeFromStarred(authController.user?.uid, widget.jobPost.jobPostID);
-                //     }
-                // });}, child: isStarred == true ? const Icon(Icons.star, color: Colors.blueAccent,) : const Icon(Icons.star_border_outlined, color: Colors.blueAccent,))),
               ],
             ),
             const SizedBox(height: 5,),
@@ -86,8 +73,6 @@ class JobCard extends StatelessWidget {
             ),
 
             const SizedBox(height: 5,),
-                // ),
-            // )
           ],
     ),
       ),

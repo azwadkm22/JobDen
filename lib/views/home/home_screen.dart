@@ -35,8 +35,6 @@ class HomeScreen extends StatelessWidget {
                 child: JobCard(
                   jobPost: jobPostController.jobPostList[index],),
               );
-                // JobPostCard(title: "Job Title",id: "11",onPressed: (){},
-              // );
             },);
       }
       ),
