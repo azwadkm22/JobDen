@@ -17,17 +17,24 @@ class AddJobPostScreen extends StatefulWidget {
 }
 
 class _AddJobPostState extends State<AddJobPostScreen> {
-  bool isInternship = true;
+  bool isInternship = false;
   bool isPartTime = false;
-  bool isRemote = true;
-  bool isFullTime = true;
+  bool isRemote = false;
+  bool isFullTime = false;
   String location = "Dhaka";
-  RangeValues salaryRange = const RangeValues(10000, 20000);
+  RangeValues salaryRange = const RangeValues(0, 50000);
   List<String> districts = ['Dhaka', 'Sylhet', 'Rajshahi', 'Chattagram', 'Khulna', 'Barishal', 'Rangpur'];
   TextEditingController fieldController = TextEditingController();
   TextEditingController jobTitleController = TextEditingController();
   TextEditingController descController = TextEditingController();
   TextEditingController companyController = TextEditingController();
+  TextEditingController qualificationController = TextEditingController();
+  List<String> qualificationsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
 
 
@@ -54,8 +61,8 @@ class _AddJobPostState extends State<AddJobPostScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 1, child: BoldText("Job Title")),
-                Expanded(flex: 3,child: CustomTextField(controller: jobTitleController, hintText: "e.g. Junior Developer",),),
+                Expanded(flex: 3, child: BoldText("Job Title")),
+                Expanded(flex: 8,child: CustomTextField(controller: jobTitleController, hintText: "e.g. Junior Developer",),),
               ],
             ),
 
@@ -64,8 +71,18 @@ class _AddJobPostState extends State<AddJobPostScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 1, child: BoldText("Description")),
-                Expanded(flex: 3,child: ExtendableTextField(controller: descController, hintText: "Brief description of the job and what it offers.",),),
+                Expanded(flex: 3, child: BoldText("Description")),
+                Expanded(flex: 8,child: ExtendableTextField(controller: descController, hintText: "Brief description of the job and what it offers.",),),
+              ],
+            ),
+
+            const SizedBox(height: 8),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 3, child: BoldText("Qualification")),
+                Expanded(flex: 8,child: ExtendableTextField(controller: qualificationController, hintText: "Comma separated values",),),
               ],
             ),
 
@@ -73,8 +90,8 @@ class _AddJobPostState extends State<AddJobPostScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 1, child: BoldText("Company")),
-                Expanded(flex: 3,child: CustomTextField(controller: companyController, hintText: "e.g. Google, Amazon, RFL",),),
+                Expanded(flex: 3, child: BoldText("Company")),
+                Expanded(flex: 8,child: CustomTextField(controller: companyController, hintText: "e.g. Google, Amazon, RFL",),),
               ],
             ),
             const SizedBox(height: 8),
@@ -171,8 +188,8 @@ class _AddJobPostState extends State<AddJobPostScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 1, child: BoldText("Field")),
-                Expanded(flex: 3,child: CustomTextField(controller: fieldController, hintText: "e.g. Computer Science",),),
+                Expanded(flex: 3, child: BoldText("Field")),
+                Expanded(flex: 8,child: CustomTextField(controller: fieldController, hintText: "e.g. Computer Science",),),
               ],
             ),
 
@@ -185,7 +202,10 @@ class _AddJobPostState extends State<AddJobPostScreen> {
               if(isPartTime) jobTypeArray.add("Part Time");
               if(isFullTime) jobTypeArray.add("Full Time");
               if(isRemote) jobTypeArray.add("Remote");
-              jobPostController.addJobPost(jobTitleController.text, companyController.text, ["BA"], salaryRange.start.round(), salaryRange.end.round(), jobTypeArray, descController.text, location, fieldController.text);
+              List qualifications = qualificationController.text.split(",") ;
+              jobPostController.addJobPost(jobTitleController.text, companyController.text, qualifications, salaryRange.start.round(), salaryRange.end.round(), jobTypeArray, descController.text, location, fieldController.text);
+
+
             },),
 
             const SizedBox(height: 20),
@@ -195,3 +215,4 @@ class _AddJobPostState extends State<AddJobPostScreen> {
     );
   }
 }
+

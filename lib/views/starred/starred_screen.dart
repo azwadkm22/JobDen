@@ -21,8 +21,6 @@ class StarredScreen extends StatelessWidget {
       appBar: CustomAppBar(label: "Starred Jobs",)
     );
   }
-
-
   Widget _buildContent() {
     return SafeArea(
       child: Obx( () {
