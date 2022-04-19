@@ -1,4 +1,4 @@
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_den/commons/navigation_bar.dart';
@@ -122,13 +122,12 @@ class JobDetailsScreen extends StatelessWidget {
                       style: const TextStyle(fontSize: 20, color: ColorPalette.black),),),
                   ],
                 ),
-                const SizedBox(height: 20,),
                 // Size
                 const SizedBox(height: 20,),
                 Row(
                   children: [
                     const Expanded(flex: 2, child: Text("Posted On: ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: ColorPalette.blue),)),
-                    Expanded(flex: 5, child: Text(jobPost.postingDate.toString(), style: const TextStyle(fontSize: 20, color: ColorPalette.black),),),
+                    Expanded(flex: 5, child: Text(DateFormat('dd-MM-yyyy').format(jobPost.postingDate), style: const TextStyle(fontSize: 20, color: ColorPalette.black),),),
                   ],
                 ),
 

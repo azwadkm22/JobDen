@@ -39,7 +39,6 @@ class _AddJobPostState extends State<AddJobPostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white12,
         body: _buildContent(),
         bottomNavigationBar: AppNavigationBar(index: 1),
       appBar: CustomAppBar(label: "New Job Opening",)
@@ -194,16 +193,13 @@ class _AddJobPostState extends State<AddJobPostScreen> {
             const SizedBox(height: 18),
 
             SubmitButton(text: "Post", onPressed: () {
-              //Post Job
               List<String> jobTypeArray = [];
               if(isInternship) jobTypeArray.add("Internship");
               if(isPartTime) jobTypeArray.add("Part Time");
               if(isFullTime) jobTypeArray.add("Full Time");
               if(isRemote) jobTypeArray.add("Remote");
-              List qualifications = qualificationController.text.split(",") ;
+              List qualifications = qualificationController.text.split(", ") ;
               jobPostController.addJobPost(jobTitleController.text, companyController.text, qualifications, salaryRange.start.round(), salaryRange.end.round(), jobTypeArray, descController.text, location, fieldController.text);
-
-
             },),
 
             const SizedBox(height: 20),

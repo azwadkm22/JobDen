@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:job_den/commons/controller.dart';
+import 'package:intl/intl.dart';
 import 'package:job_den/models/job_post.dart';
 import 'package:job_den/views/common_widgets/color_palette.dart';
 import 'package:job_den/views/common_widgets/job_field_list_view.dart';
@@ -68,7 +68,7 @@ class JobCard extends StatelessWidget {
             Row(
               children: [
                 const Text("Posted: ", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.blue)),
-                Text(jobPost.postingDate.toString()),
+                Text(DateFormat('dd-MM-yyyy').format(jobPost.postingDate)),
               ],
             ),
 
