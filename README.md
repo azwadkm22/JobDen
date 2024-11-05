@@ -1,16 +1,5 @@
 # job_den
 
-A new Flutter project.
+JobDen is a comprehensive job search app that enables users to search for, apply to, and post job opportunities. The platform provides an intuitive interface for job seekers to find relevant positions, submit applications, and track their job search progress. Employers can also easily post job listings to reach potential candidates. The app was built using Flutter with Dart.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## [Figma Design Link](https://www.figma.com/design/iFCtSPje9rLiqwAZCtHuav/JobDen-Prototype?node-id=0-1&node-type=canvas&t=A9YBZ1JO9MJv7oA4-0)
